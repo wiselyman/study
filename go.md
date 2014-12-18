@@ -194,3 +194,70 @@ m["k2"] = 13
     }
 ```
 
+# 10 函数
+
+```
+package main
+
+import "fmt"
+
+func plus(a int, b int) int {
+
+    return a + b
+}
+
+func main() {
+    res := plus(1, 2)
+    fmt.Println("1+2 =", res)
+}
+```
+
+# 11 多返回值
+
+```
+package main
+
+import "fmt"
+
+func vals() (int, int) {
+    return 3, 7
+}
+
+func main() {
+
+    a, b := vals()
+    fmt.Println(a)
+    fmt.Println(b)
+
+    _, c := vals()
+    fmt.Println(c)
+}
+
+```
+
+# 12 可变参数函数
+
+```
+package main
+
+import "fmt"
+
+func sum(nums ...int) {
+    fmt.Print(nums, " ")
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    fmt.Println(total)
+}
+
+func main() {
+
+    sum(1, 2)
+    sum(1, 2, 3)
+
+    nums := []int{1, 2, 3, 4}
+    sum(nums...)
+}
+```
+
