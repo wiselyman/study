@@ -290,3 +290,177 @@ func main() {
 }
 ```
 
+# 14 递归
+
+```
+package main
+
+import "fmt"
+
+func fact(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * fact(n-1)
+}
+
+func main() {
+    fmt.Println(fact(7))
+}
+
+```
+
+# 15 指针
+
+```
+
+package main
+
+import "fmt"
+
+func zeroval(ival int) {
+    ival = 0
+}
+
+func zeroptr(iptr *int) {
+    *iptr = 0
+}
+
+func main() {
+    i := 1
+    fmt.Println("initial:", i)
+
+    zeroval(i)
+    fmt.Println("zeroval:", i)
+
+    zeroptr(&i)
+    fmt.Println("zeroptr:", i)
+
+    fmt.Println("pointer:", &i)
+}
+
+```
+输出结果
+```
+initial: 1
+zeroval: 1
+zeroptr: 0
+pointer: 0x42131100
+```
+
+# 16 结构体
+
+```
+package main
+
+import "fmt"
+
+type person struct {
+    name string
+    age  int
+}
+
+func main() {
+
+    fmt.Println(person{"Bob", 20})
+
+    fmt.Println(person{name: "Alice", age: 30})
+
+    fmt.Println(person{name: "Fred"})
+
+    fmt.Println(&person{name: "Ann", age: 40})
+
+    s := person{name: "Sean", age: 50}
+    fmt.Println(s.name)
+
+    sp := &s
+    fmt.Println(sp.age)
+
+    sp.age = 51
+    fmt.Println(sp.age)
+}
+
+```
+
+# 17 方法
+
+```
+package main
+
+import "fmt"
+
+type rect struct {
+    width, height int
+}
+
+func (r *rect) area() int {
+    return r.width * r.height
+}
+
+func (r rect) perim() int {
+    return 2*r.width + 2*r.height
+}
+
+func main() {
+    r := rect{width: 10, height: 5}
+
+    fmt.Println("area: ", r.area())
+    fmt.Println("perim:", r.perim())
+
+    rp := &r
+    fmt.Println("area: ", rp.area())
+    fmt.Println("perim:", rp.perim())
+}
+
+```
+
+# 18 接口
+
+```
+package main
+
+import "fmt"
+import "math"
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+type square struct {
+    width, height float64
+}
+type circle struct {
+    radius float64
+}
+
+func (s square) area() float64 {
+    return s.width * s.height
+}
+func (s square) perim() float64 {
+    return 2*s.width + 2*s.height
+}
+
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+func measure(g geometry) {
+    fmt.Println(g)
+    fmt.Println(g.area())
+    fmt.Println(g.perim())
+}
+
+func main() {
+    s := square{width: 3, height: 4}
+    c := circle{radius: 5}
+
+    measure(s)
+    measure(c)
+}
+
+```
+
