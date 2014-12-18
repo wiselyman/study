@@ -129,7 +129,7 @@ func main() {
 
 # 6 Select
 
-select可以等待多个channel操作。
+使用select可以等待多个channel操作。
 
 ```
 package main
