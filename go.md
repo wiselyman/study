@@ -71,7 +71,7 @@ func main() {
     }
 ```
 
-# 6 arrays
+# 6 Arrays
 
 ## 6.1定义
 
@@ -93,9 +93,9 @@ func main() {
 
 `var twoD [2][3]int`
 
-# 7 slices
+# 7 Slices
 
-slice是go语言的一个关键数据类型，功能比array丰富，创使用make创建。
+Slice是go语言的一个关键数据类型，功能比array丰富，创使用make创建。
 
 ## 7.1定义
 
@@ -116,9 +116,81 @@ s = append(s, "d")
 s = append(s, "e", "f")
 ```
 
-# 7.4 copy
+## 7.4 copy
 
 ```
 c := make([]string, len(s))
 copy(c,s)
 ```
+
+## 7.5 slice
+
+- 包含s[2],不包含s[5]
+ - `l :=s[2:5]`
+- 不包含s[5]
+ - `l = s[:5]`
+- 包含s[2]
+ - `l = s[2:]`
+
+## 7.6 定义和初始化
+
+`t := []string{"g", "h", "i"}`
+
+## 7.7 多维slice
+
+`twoD := make([][]int, 3)`
+
+# 8 Maps
+
+## 8.1 定义
+
+`m := make(map[string]int)`
+
+## 8.2 赋值
+
+```
+m["k1"] = 7
+m["k2"] = 13
+```
+
+## 8.3 获取
+
+`v1 :=m["k1"]`
+
+## 8.4 删除
+
+`delete(m,"k2")`
+
+## 8.5 定义和初始化
+
+`n := map[string]int{"foo": 1, "bar": 2}`
+
+# 9 Range
+
+```
+  nums := []int{2, 3, 4}
+    sum := 0
+    for _, num := range nums {
+        sum += num
+    }
+    fmt.Println("sum:", sum)
+```
+```
+    for i, num := range nums {
+        if num == 3 {
+            fmt.Println("index:", i)
+        }
+    }
+```
+```
+    kvs := map[string]string{"a": "apple", "b": "banana"}
+    for k, v := range kvs {
+        fmt.Printf("%s -> %s\n", k, v)
+    }
+```
+```
+    for i, c := range "go" {
+        fmt.Println(i, c)
+    }
+```
+
