@@ -162,3 +162,157 @@ func main() {
 }
 
 ```
+
+# 7 Timeouts
+
+```
+package main
+
+import "time"
+import "fmt"
+
+func main() {
+
+    c1 := make(chan string, 1)
+    go func() {
+        time.Sleep(time.Second * 2)
+        c1 <- "result 1"
+    }()
+
+    select {
+    case res := <-c1:
+        fmt.Println(res)
+    case <-time.After(time.Second * 1):
+        fmt.Println("timeout 1")
+    }
+
+    c2 := make(chan string, 1)
+    go func() {
+        time.Sleep(time.Second * 2)
+        c2 <- "result 2"
+    }()
+
+    select {
+    case res := <-c2:
+        fmt.Println(res)
+    case <-time.After(time.Second * 3):
+        fmt.Println("timeout 2")
+    }
+}
+
+// todo: cancellation?
+
+```
+
+# 8 Non-Blocking Channel Operations
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    messages := make(chan string)
+    signals := make(chan bool)
+
+    select {
+    case msg := <-messages:
+        fmt.Println("received message", msg)
+    default:
+        fmt.Println("no message received")
+    }
+
+    msg := "hi"
+    select {
+    case messages <- msg:
+        fmt.Println("sent message", msg)
+    default:
+        fmt.Println("no message sent")
+    }
+
+    select {
+    case msg := <-messages:
+        fmt.Println("received message", msg)
+    case sig := <-signals:
+        fmt.Println("received signal", sig)
+    default:
+        fmt.Println("no activity")
+    }
+}
+```
+
+输出结果：
+
+```
+no message received
+no message sent
+no activity
+```
+
+# 9 Closing Channels
+```
+package main
+
+import "fmt"
+
+func main() {
+    jobs := make(chan int, 5)
+    done := make(chan bool)
+
+    go func() {
+        for {
+            j, more := <-jobs
+            if more {
+                fmt.Println("received job", j)
+            } else {
+                fmt.Println("received all jobs")
+                done <- true
+                return
+            }
+        }
+    }()
+
+    for j := 1; j <= 3; j++ {
+        jobs <- j
+        fmt.Println("sent job", j)
+    }
+    close(jobs)
+    fmt.Println("sent all jobs")
+
+    <-done
+}
+
+```
+
+输出结果
+
+```
+sent job 1
+received job 1
+sent job 2
+received job 2
+sent job 3
+received job 3
+sent all jobs
+received all jobs
+```
+
+# 10 Range over Channel
+
+```
+package main
+
+import "fmt"
+
+func main() {
+
+    queue := make(chan string, 2)
+    queue <- "one"
+    queue <- "two"
+    close(queue)
+
+    for elem := range queue {
+        fmt.Println(elem)
+    }
+}
+```
