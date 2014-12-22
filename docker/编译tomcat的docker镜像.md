@@ -39,3 +39,4 @@ CMD ["catalina.sh", "run"]
 # 访问
 
 http://ip:27945
+![](https://raw.githubusercontent.com/wiselyman/study/master/docker/resources/result.jpg)
