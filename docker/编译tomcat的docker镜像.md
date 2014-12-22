@@ -3,6 +3,7 @@ docker官方的registry上已有很多tomcat的image了，但是从它们的Dock
 本例使用本地文件编译，这样可以更大的定制tomcat，也练习下自己编译docker镜像。
 
 # 1 文件结构
+![](https://raw.githubusercontent.com/wiselyman/study/master/docker/resources/file.jpg)
 
 # 2 Dockerfile
 
@@ -33,8 +34,8 @@ CMD ["catalina.sh", "run"]
 
 # 运行
 
-`docker run -d -p 8888:8080 tomcat`
+`docker run -d -p 27945:8080 tomcat`
 
 # 访问
 
-http://ip:8888
+http://ip:27945
