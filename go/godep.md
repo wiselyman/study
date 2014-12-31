@@ -1,6 +1,6 @@
 # 安装godep
 
-官方的安装文档是使用`go get github.com/tools/godep`,很可惜，因为“网络”问题会报一个找不到`golang.org/x/tools/go/vcs`。
+官方的安装文档是使用`go get github.com/tools/godep`,很可惜，因为“网络”问题会报一个找不到`golang.org/x/tools/go/vcs`的错误。
 
 而https://github.com/golang/tools是golang.org/x/tools的一个镜像，代码是一样的，所以我是如下安装的。
 
