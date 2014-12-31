@@ -50,6 +50,18 @@
 
 ![](https://raw.githubusercontent.com/wiselyman/study/master/go/resources/godep-Godeps.jpg)
 
+- 这时你可以移除`xx.org`目录了。
+
+- 继续使用将用以下命令
+
+```
+godep go run main.go
+godep go build
+godep go install
+godep go test
+
+```
+
 
 
 
