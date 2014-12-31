@@ -37,3 +37,8 @@ go get github.com/golang/tools
     ```
 - 项目目录及代码如图所示
 
+
+
+
+- 在`skeleton\src\wiselyman.org\app`目录下，执行`godep save`,此时会生成Godeps文件夹
+
