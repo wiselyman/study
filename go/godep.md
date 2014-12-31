@@ -23,5 +23,17 @@ go get github.com/golang/tools
 
 - 此演示项目的路径要加入到GOPATH
 - 依赖的项目和项目本身都应该是个git repository
+ - `cd skeleton\src\wiselyman.org\app` 
+    ```
+	git init
+	git add .
+	git commit
+    ```
+ - `cd skeleton\src\xx.org\dep` 
+    ```
+	git init
+	git add .
+	git commit
+    ```
 - 项目目录及代码如图所示
 
