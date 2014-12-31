@@ -22,23 +22,35 @@ go get github.com/golang/tools
 建立一个演示项目来演示godep。
 
 - 此演示项目的路径要加入到GOPATH
+
 - 依赖的项目和项目本身都应该是个git repository
+
  - `cd skeleton\src\wiselyman.org\app` 
+  
     ```
-	git init
+	git init 
 	git add .
 	git commit
     ```
  - `cd skeleton\src\xx.org\dep` 
+  
     ```
 	git init
-	git add .
-	git commit
+	git add .   
+	git commit   
     ```
-- 项目目录及代码如图所示
+- 项目目录及代码如图所示    
 
+![](https://raw.githubusercontent.com/wiselyman/study/master/go/resources/godep-main.jpg)
+![](https://raw.githubusercontent.com/wiselyman/study/master/go/resources/godep-external.jpg)
 
 
 
 - 在`skeleton\src\wiselyman.org\app`目录下，执行`godep save`,此时会生成Godeps文件夹
+
+![](https://raw.githubusercontent.com/wiselyman/study/master/go/resources/godep-Godeps.jpg)
+
+
+
+
 
