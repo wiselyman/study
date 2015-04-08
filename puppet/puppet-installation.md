@@ -58,7 +58,7 @@ certname = puppet.example.net
 `yum -y install puppet puppet-server`
 
 
-# 测试
+# 4 测试
 
 ## client执行：`puppet agent --test`
 
