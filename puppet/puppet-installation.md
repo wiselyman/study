@@ -1,7 +1,7 @@
 # 1 准备
 
 - 2台centos7(master:192.168.1.103 client:192.168.1.106)
-- 分别执行`http://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-7-11.noarch.rpm`
+- 分别执行`rpm -i http://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-7-11.noarch.rpm`
 
 # 2 Master
 
