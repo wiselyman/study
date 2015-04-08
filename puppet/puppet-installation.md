@@ -83,12 +83,15 @@ Exiting; no certificate found and waitforcert is disabled
 ```
 "agent1.example.net" (SHA256) 14:7D:AA:34:C8:F1:70:28:B9:51:A6:7D:94:3F:69:92:8F:61:94:17:7D:4A:EF:F2:44:CC:4A:BC:6B:D5:C3:EC
 ```
+
 - `puppet cert sign agent1.example.net`或者`puppet cert sign --all`
 
   输出:
-  ```
+  
+```
 Notice: Signed certificate request for agent1.example.net
 Notice: Removing file Puppet::SSL::CertificateRequest agent1.example.net at '/var/lib/puppet/ssl/ca/requests/agent1.example.net.pem'
+```
 
 ## client再次执行
 
