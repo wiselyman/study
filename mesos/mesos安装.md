@@ -106,8 +106,8 @@ systemctl stop firewalld && systemctl disable firewalld
 
 # 4 测试
 
-访问 http://192.168.1.110:5050 mesos地址
-访问 http://192.168.1.110:8080 marathon地址，可利用其发布docker镜像并可调整应用数量
+- 访问 http://192.168.1.110:5050 mesos地址
+- 访问 http://192.168.1.110:8080 marathon地址，可利用其发布docker镜像并可调整应用数量
 
 
 
