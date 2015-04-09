@@ -1,4 +1,4 @@
-# 简单使用
+# 1 简单使用
 
 现在我们已经安装好了puppet server和puppet client，我们做个最简单的示例，让client的puppet开机自启动
 
@@ -46,7 +46,7 @@ service { 'puppet':
 }
 ```
 
-# 文件同步
+# 2 文件同步
 
 ## server端
 
