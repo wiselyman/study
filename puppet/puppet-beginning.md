@@ -45,3 +45,52 @@ service { 'puppet':
     enable => false,
 }
 ```
+
+# 文件同步
+
+## server端
+
+### 配置
+
+`/etc/puppet/fileserver.conf`
+
+增加
+
+```
+[files]
+    path /etc/puppet/files
+    allow *
+```
+
+site.pp:
+
+```
+node default {
+        file { '/tmp/hosts':
+                ensure => file,
+                owner => nobody,
+                group => nobody,
+                mode => 0444,
+                force => false,
+                source => 'puppet:///files/hosts',
+        }
+        file { '/tmp/hosts.linked':
+                ensure => link,
+                target => '/tmp/hosts',
+        }
+        file { '/tmp/puppet-files':
+                ensure => directory,
+                owner => root,
+                group => root,
+                mode => 0444,
+                recurse => true,
+                source => 'puppet:///files',
+        }
+}
+```
+
+## 客户端
+
+`puppet agent -t`或`puppet agent --test`
+
+此时查看/tmp目录下多了 hosts,hosts.linked,puppet-files
