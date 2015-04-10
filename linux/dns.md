@@ -2,7 +2,7 @@
 
 准备一台安装有centos/fedora的机器（192.168.1.103），本例基于Centos7
 
-# 1.1 安装bind
+# 1.1 安装bind9
 
 `yum -y install bind bind-utils`
 
