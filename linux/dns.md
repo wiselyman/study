@@ -15,7 +15,7 @@
 
 ```
 options {
-        > listen-on port 53 { 127.0.0.1; 192.168.1.103;}; ##注意此处
+        listen-on port 53 { 127.0.0.1; 192.168.1.103;}; ##注意此处
         listen-on-v6 port 53 { ::1; };
         directory       "/var/named";
         dump-file       "/var/named/data/cache_dump.db";
