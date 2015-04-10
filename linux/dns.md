@@ -12,16 +12,16 @@
 
 `vi /etc/named.conf`
 
-注意黑体位置
+
 ```
 options {
-        listen-on port 53 { 127.0.0.1; `**192.168.1.103;`**};
+        > listen-on port 53 { 127.0.0.1; 192.168.1.103;}; ##注意此处
         listen-on-v6 port 53 { ::1; };
         directory       "/var/named";
         dump-file       "/var/named/data/cache_dump.db";
         statistics-file "/var/named/data/named_stats.txt";
         memstatistics-file "/var/named/data/named_mem_stats.txt";
-        allow-query     { localhost;**192.168.1.0/24;** };
+        allow-query     { localhost;192.168.1.0/24; }; ##注意此处
 
         recursion yes;
 
@@ -50,17 +50,21 @@ zone "." IN {
         file "named.ca";
 };
 
-`**zone "example.local" IN {
+##注意下面
+
+zone "example.local" IN {
         type master;
         file "forward.example";
         allow-update{ none; };
-};`**
+};
 
-`**zone "1.168.192.in-addr.arpa" IN {
+##注意下面
+
+zone "1.168.192.in-addr.arpa" IN {
         type master;
         file "reverse.example";
         allow-update{ none; };
-};`**
+};
 
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
