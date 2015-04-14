@@ -10,6 +10,7 @@ Apache Mesos据说是云计算的未来，利用Mesos可轻易实现一个PaaS�
 
 ```
 sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+```
 
 ## 配置hosts
 
@@ -47,6 +48,7 @@ server.3=192.168.1.112:2888:3888
 
 ## 配置mesos
 
+
 `vi /etc/mesos/zk`
 
 ```
@@ -74,6 +76,12 @@ systemctl stop firewalld && systemctl disable firewalld
 
 # 3 Slave节点安装
 
+## 添加 mesos的yum源
+
+```
+sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+```
+
 ## 配置hosts
 
 `vi /etc/hosts`
@@ -83,6 +91,10 @@ systemctl stop firewalld && systemctl disable firewalld
 192.168.1.111 master2
 192.168.1.112 master3
 ```
+
+## 安装mesos
+
+`yum -y install mesos`
 
 ## 配置master信息
 
