@@ -16,13 +16,14 @@ sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1
 
 `vi /etc/hosts`
 
+增加：
+
 ```
 192.168.1.110 master1
 192.168.1.111 master2
 192.168.1.112 master3
 ```
 
-```
 
 ## 安装mesos及相关软件
 
@@ -50,16 +51,13 @@ server.3=192.168.1.112:2888:3888
 
 
 `vi /etc/mesos/zk`
-
-```
-zk://192.168.1.110:2181,192.168.1.111:2181,192.168.1.112:2181/mesos
-```
+增加内容:
+`zk://192.168.1.110:2181,192.168.1.111:2181,192.168.1.112:2181/mesos`
 
 `vi /etc/mesos-master/quorum`
 
-```
-2
-```
+增加内容：`2`
+
 
 
 ## 启动zookeeper mesos-master marathon
@@ -86,6 +84,8 @@ sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1
 
 `vi /etc/hosts`
 
+增加
+
 ```
 192.168.1.110 master1
 192.168.1.111 master2
@@ -99,6 +99,8 @@ sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1
 ## 配置master信息
 
 `vi /etc/mesos/zk`
+
+增加
 
 ```
 zk://192.168.1.110:2181,192.168.1.111:2181,192.168.1.112:2181/mesos
