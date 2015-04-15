@@ -164,7 +164,10 @@ systemctl disable mesos-master
 # 4 测试
 
 - 访问 http://192.168.1.110:5050 mesos地址
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/11.jpg)
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/12.jpg)
 - 访问 http://192.168.1.110:8080 marathon地址，可利用其发布docker镜像并可调整应用数量
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/13.jpg)
 
 
 
