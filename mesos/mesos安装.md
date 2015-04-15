@@ -105,6 +105,7 @@ echo 192.168.1.112 | sudo tee /etc/marathon/conf/hostname
 ## 启动zookeeper mesos-master marathon
 
 - master1,master2,master3
+
 ```
 systemctl start  zookeeper && systemctl start mesos-master && systemctl start marathon
 
@@ -123,6 +124,7 @@ systemctl disable mesos-slave
 
 ```
 systemctl stop firewalld && systemctl disable firewalld
+```
 
 ## 添加 mesos的yum源
 
@@ -163,7 +165,7 @@ systemctl start  mesos-slave  && systemctl enable  mesos-slave
 systemctl disable mesos-master
 ```
 
-```
+
 
 # 4 测试
 
