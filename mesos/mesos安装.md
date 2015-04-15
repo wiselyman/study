@@ -133,11 +133,15 @@ sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1
 
 ## 安装mesos
 
-`yum -y install mesos`
+```
+yum -y install mesos
+```
 
 ## 配置master信息
 
-`vi /etc/mesos/zk`
+```
+vi /etc/mesos/zk
+```
 
 增加
 
