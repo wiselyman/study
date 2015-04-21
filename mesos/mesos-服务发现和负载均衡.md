@@ -8,3 +8,5 @@
 command  `/usr/local/mesos-dns/mesos-dns --v=0 -config=/usr/local/mesos-dns/config.json`
 
 contraints   `hostname:CLUSTER:192.168.1.113`
+
+每台client上的nameserver 为192.168.1.113
