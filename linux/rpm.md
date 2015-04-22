@@ -36,4 +36,4 @@ RPM包管理是红帽系列的Linux(Redhat,Suse,CentOS,Fedora..)通用的包管�
 
 
 - rpm -e xx (卸载)
-  -e:erase 删除
+  - -e:erase 删除
