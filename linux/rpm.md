@@ -25,11 +25,11 @@ RPM包管理是红帽系列的Linux(Redhat,Suse,CentOS,Fedora..)通用的包管�
 
 
 - rpm -qip xx.rpm (指定rpm包文件查看包信息)
-  - p：package 指定包名
+  - -p：package 指定包名
 
 
 - rpm -qpl xx.rpm (查询包里的所有文件)
-  -l: list 列表
+  - -l: list 列表
 
 
 - rpm -qRp xx.rpm (显示此包的依赖)
