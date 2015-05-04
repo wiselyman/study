@@ -1,6 +1,6 @@
 # 1 发布docker程序到marathon
 
-## 1.1 发布一个docker镜像到marathon平台
+## 1.1 发布docker镜像到marathon平台
 
 ### 1.1.1 编写Docker.json
 
@@ -10,7 +10,7 @@
     "type": "DOCKER",
     "docker": {
       "image": "192.168.1.103:5000/tomcat",
-      "network": "BRIDGE",     
+      "network": "BRIDGE",
       "portMappings": [
          { "containerPort": 8080, "hostPort": 0, "protocol": "tcp" }
       ]
@@ -122,4 +122,8 @@ systemctl enable haproxy
 
 ## 2.6 访问测试
 tomcat:`http://192.168.1.103:10000`
+
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/load1.jpg)
+
 demo:`http://192.168.1.103:10001`
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/load2.jpg)
