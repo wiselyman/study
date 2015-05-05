@@ -6,7 +6,7 @@ github地址:https://github.com/QubitProducts/bamboo
 
 ```
 docker pull gregory90/bamboo:0.2.11
-docker tag 192.168.1.103:5000/bamboo
+docker tag gregory90/bamboo 192.168.1.103:5000/bamboo
 docker push 192.168.1.103:5000/bamboo
 ```
 
