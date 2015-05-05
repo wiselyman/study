@@ -32,18 +32,25 @@ docker run -t -i -d -p 8000:8000 -p 80:80 \
 访问发布baboo的机器:`http://ip:8000`
 
 自动检测我们在marathon发布的docker程序
+
 ![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/baboo1.jpg)
 
 ## 1.4 修改程序映射地址
 
 - 映射tomcat地址为`path_beg -i /`
+
   ![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/bamboo2.jpg)
+
 - 映射spring boot 可执行web jar(demo)的地址为`path_beg -i /xx`
+
   ![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/bamboo3.jpg)
 
 
 ## 1.5 测试访问
 - tomcat `http://ip`
+
 ![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/re1.jpg)
+
 - demo `http://ip/xx`
+
 ![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/re2.jpg)
