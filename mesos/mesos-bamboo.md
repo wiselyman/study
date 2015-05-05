@@ -32,7 +32,7 @@ docker run -t -i -d -p 8000:8000 -p 80:80 \
 访问发布baboo的机器:`http://ip:8000`
 
 自动检测我们在marathon发布的docker程序
-![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/bamboo1.jpg)
+![](https://raw.githubusercontent.com/wiselyman/study/master/mesos/resources/baboo1.jpg)
 
 ## 1.4 修改程序映射地址
 
