@@ -3,7 +3,7 @@
 - 本教程默认读者有一定的Java Web及Spring使用基础;
 - 本教程采用点睛的形式展现Spring各个知识点，不会深入到各个知识点的方方面面，目的是为了初学者快速掌握Spring的各方面知识;
 - Spring的官方开发的示例都使用maven和gradle作为构建工具,本教程采用maven作为构建工具;
-- 使用Spring Tool Suite(STS基于eclipse,内置对spring及maven的支持)作为IDE;
+- 使用Spring Tool Suite(STS基于eclipse,内置对spring及maven的支持)作为IDE(当然你可以使用原版eclipse并安装sts与maven插件);
 
 ## 0.2 开发环境搭建演示
 
