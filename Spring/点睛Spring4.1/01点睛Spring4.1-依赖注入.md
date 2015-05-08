@@ -1,8 +1,9 @@
 ## 1.1 声明bean
-- spring利用**@Component,@Service,@Repository,@Controller**注解在一个java类上声明是spring容器的bean;
-- 使用**@Component,@Service,@Repository,@Controller**任意一个在类上效果是等同的,不同的名称是为了更好的标志类的角色和功能,避免代码维护者混淆代码作用;
+- spring利用**@Configuration,@Component,@Service,@Repository,@Controller**注解在一个java类上声明是spring容器的bean;
+- 使用**@Configuration,@Component,@Service,@Repository,@Controller**任意一个在类上效果是等同的,不同的名称是为了更好的标志类的角色和功能,避免代码维护者混淆代码作用;
 - 那我们使用这四个注解的准则是什么呢?
- - @Component 没有明确的角色,少用;
+ - @Configuration 声明是一个配置bean
+ - @Component 系统组件,没有明确的角色;
  - @Service 在业务逻辑层(service层)使用;
  - @Repository 在数据访问层(dao层)使用;
  - @Controller 在展现层(MVC->Spring MVC)使用;
