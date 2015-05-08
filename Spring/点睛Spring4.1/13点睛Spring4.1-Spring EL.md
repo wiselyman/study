@@ -29,7 +29,7 @@ public class DemoService {
 
 	@Value("#{demoBean.another}")
 	private String fromAnother;
-	//注意注入properties使用$而不是#,切需要声明propertyConfigure,在下面的@Bean
+	//注意注入properties使用$而不是#,且需要声明propertyConfigure,在下面的@Bean
 	@Value("${wisely.name}")
 	private String myName;
 
