@@ -2,6 +2,7 @@
 - spring用来调用外部资源数据的方式
 - 支持调用文件或者是网址
 - 在系统中调用properties文件可参考<<02点睛Spring4.1-Java Config>>中结合**@PropertySource**和E**nvironment**来使用
+- 也可以使用@Value来注入资源,@Value的使用将在<<13点睛Spring4.1-Spring EL>>章节中有更详细的使用
 
 ## 4.2 示例
 
@@ -32,23 +33,35 @@ package com.wisely.resource;
 import java.io.IOException;
 
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 public class Main {
+	@Value("classpath:com/wisely/resource/info.txt")
+	private Resource info;
 
 	public static void main(String[] args) throws IOException {
 		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.resource");
+		Main main = context.getBean(Main.class);
+		System.out.println(main.injectInfo());
+		System.out.println("----------------------------");
+
 		//classpath: spring的一个模拟协议,类似于http：
-		Resource file = context.getResource("classpath:com/wisely/resource/info.txt");
+		Resource file = context.getResource("classpath:com/wisely/resource/info.txt"); 
 		System.out.println(IOUtils.toString(file.getInputStream()));
+		System.out.println("----------------------------");
 
 		Resource url = (UrlResource) context.getResource("http://www.baidu.com");
 		System.out.println(IOUtils.toString(url.getInputStream()));
 		context.close();
+	}
+
+	public String injectInfo() throws IOException{
+		return IOUtils.toString(info.getInputStream());
 	}
 
 }
@@ -61,6 +74,11 @@ public class Main {
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad
+----------------------------
+sadfasdfasdfasdfasdfsad
+sadfasdfasdfasdfasdfsad
+sadfasdfasdfasdfasdfsad
+----------------------------
 <!DOCTYPE html><!--STATUS OK--><html><head>
 .......
 ```
