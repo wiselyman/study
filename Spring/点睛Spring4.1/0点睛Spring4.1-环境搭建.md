@@ -1,13 +1,11 @@
-# 0 前言
-
-## 0.1 说明
+## 0.1 前置条件
 - Spring 4.1提倡基于Java Config和注解的配置，所以本教程通篇不会采用任何和xml配置相关的内容;
 - 本教程默认读者有一定的Java Web及Spring使用基础;
 - 本教程采用点睛的形式展现Spring各个知识点，不会深入到各个知识点的方方面面，目的是为了初学者快速掌握Spring的各方面知识;
 - Spring的官方开发的示例都使用maven和gradle作为构建工具,本教程采用maven作为构建工具;
 - 使用Spring Tool Suite(STS基于eclipse,内置对spring及maven的支持)作为IDE;
 
-## 0.2 开发环境搭建
+## 0.2 开发环境搭建演示
 
 ### 0.2.1 STS下载地址,解压可用
   - 32位:http://dist.springsource.com/release/STS/3.6.4.RELEASE/dist/e4.4/spring-tool-suite-3.6.4.RELEASE-e4.4.2-win32.zip
