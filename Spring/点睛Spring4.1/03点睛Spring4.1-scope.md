@@ -8,9 +8,9 @@
   - session:web项目中,每一个http session,新建一个bean实例;
   - globalSession:这个只在portal应用中有用,每一个global http session,新建一个bean实例
 
-## 3.1 演示
+## 3.2 演示
 
-### 3.1.1 新建scope为singleton的类
+### 3.2.1 新建scope为singleton的类
 ```
 package com.wisely.scope;
 
@@ -23,7 +23,7 @@ public class DemoSingletonService {
 
 ```
 
-### 3.1.2 新建scope为prototype的类
+### 3.2.2 新建scope为prototype的类
 ```
 package com.wisely.scope;
 
@@ -38,7 +38,7 @@ public class DemoPrototypeService {
 
 ```
 
-### 3.1.3 测试
+### 3.2.3 测试
 ```
 package com.wisely.scope;
 
