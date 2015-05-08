@@ -13,3 +13,61 @@
 - **@Autowired,@Inject,@Resource**可注解在set方法上或者属性上;我习惯注解在属性上,代码更少层次更清晰;
 
 ## 1.3 示例
+
+### 1.3.1 新建待注入的java类
+```
+package com.wisely.di;
+
+import org.springframework.stereotype.Service;
+
+@Service//写为@Component,@Controller,@Repository效果相同,视具体情况使用
+public class Demo1Service {
+
+	public String sayHello(String word ){
+		return "Hello "+word;
+	}
+}
+
+
+```
+
+### 1.3.2 新建被注入的java类
+```
+package com.wisely.di;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+@Service
+public class Demo2Service {
+	@Autowired //注入Demo1Service,还可使用JavaEE的@Inject(JSR-330),@Resource(JSR-250)效果相同
+	Demo1Service demo1Service;
+	public String callDemo1SayHello(String word){
+		return demo1Service.sayHello(word);
+	}
+
+}
+
+```
+
+### 1.3.3 测试
+```
+package com.wisely.di;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		//设定此包下的类被注册成spring的bean,包含@Configuration,@Component,@Service,@Repository,@Controller
+		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.di");
+		Demo2Service demo2Service = context.getBean(Demo2Service.class);
+		System.out.println(demo2Service.callDemo1SayHello("World"));
+		context.close();
+	}
+
+}
+
+```
+
+输出结果`Hello World`
