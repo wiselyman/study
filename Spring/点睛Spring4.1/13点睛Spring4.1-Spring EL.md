@@ -1,6 +1,6 @@
 ## 13.1 Spring EL
-- Spring EL-Spring表达式语言,支持在xml和注解中使用表达式,类似jsp的EL表达式语言
-- 本教程关注于在表达式中使用Spring EL
+- Spring EL-Spring表达式语言,支持在xml和注解中使用表达式,类似jsp的EL表达式语言;
+- 本教程关注于在注解中使用Spring EL;
 - Spring EL包含很多类型的表达式,本教程关注常用的注入
  - 获得系统属性
  - 注入表达式
