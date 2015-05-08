@@ -41,6 +41,7 @@ public class BeanWayConfig {
 ```
 
 #### 测试
+```
 package com.wisely.prepost;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -54,6 +55,7 @@ public class Main {
 	}
 
 }
+```
 输出结果
 ```
 初始化构造函数-bean
