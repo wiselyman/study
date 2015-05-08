@@ -68,6 +68,16 @@ public class DemoBean {
 }
 
 ```
+
+### 13.2.3 新建测试txt和properties
+```
+1234
+```
+
+```
+wisely.name = wyf
+```
+
 ### 13.2.3 测试
 ```
 package com.wisely.springel;
