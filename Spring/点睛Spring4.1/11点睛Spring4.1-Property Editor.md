@@ -124,7 +124,39 @@ public class DemoBean {
 
 ```
 
-#### 11.2.2.3 配置editorConfigurer
+#### 11.2.2.3 实现自定义的Property Editor
+```
+package com.wisely.propertyeditor;
+
+import java.beans.PropertyEditorSupport;
+
+public class DemoPropertyEditor extends PropertyEditorSupport{
+
+	@Override
+	public String getAsText() {
+		DemoBean2 bean2 =(DemoBean2) getValue();
+		return bean2.getClass().getName() + "," + bean2.getName() + "," + bean2.getAddress();
+	}
+
+	@Override
+	public void setAsText(String text) throws IllegalArgumentException {
+		String[] parts = text.split("-");
+		try{
+			DemoBean2 bean2 = new DemoBean2();
+			bean2.setName(parts[0]);
+			bean2.setAddress(parts[1]);
+			setValue(bean2);
+		}catch(Exception e){
+			throw new IllegalArgumentException(e);
+		}
+
+	}
+
+}
+
+```
+
+#### 11.2.2.4 配置editorConfigurer
 ```
 package com.wisely.propertyeditor;
 
@@ -151,7 +183,7 @@ public class Demo2Config {
 
 ```
 
-#### 11.2.2.4 测试
+#### 11.2.2.5 测试
 ```
 package com.wisely.propertyeditor;
 
