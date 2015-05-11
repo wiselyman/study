@@ -1,0 +1,82 @@
+## 12.1 Aware
+- 我们设计的准则是解耦,这就意味着我们不能对Spring的IoC容器有直接的依赖,但是我们还是想我们的bean能识别容器的资源;
+- 我们通过实现**aware**接口来识别spring容器的资源;
+- Spring包含的aware有:**BeanNameAware，BeanFactoryAware,ApplicationContextAware,MessageSourceAware,ApplicationEventPublisherAware,ResourceLoaderAware**
+- 这也就意味着我们就耦合到了spring框架上了,没有spring框架你的代码将无法执行;
+- 在我们整合非spring容器管理的代码,框架的时候;我们为可以用aware将两者整合;
+
+## 12.2 示例
+### 12.2.1 新建演示bean
+```
+package com.wisely.aware;
+
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ResourceLoaderAware;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Component;
+@Component
+public class DemoBean implements BeanNameAware,ResourceLoaderAware{
+	private String name;
+	private ResourceLoader loader;
+
+	//BeanNameAware接口的方法
+	public void setBeanName(String beanName) {
+		this.name = beanName;
+
+	}
+
+	//ResourceLoaderAware接口的的方法
+	public void setResourceLoader(ResourceLoader resourceLoader) {
+		this.loader = resourceLoader;
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public ResourceLoader getLoader() {
+		return loader;
+	}
+
+}
+
+```
+### 12.2.2 新建演示用文件info.txt
+```
+jhkljhlkjhlkj
+111111111111
+```
+### 12.2.3 测试
+```
+package com.wisely.aware;
+
+import java.io.IOException;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.aware");
+		DemoBean db = context.getBean(DemoBean.class);
+		System.out.println(db.getName());
+		ResourceLoader rl = db.getLoader();
+		Resource r = rl.getResource("classpath:com/wisely/aware/info.txt");
+		System.out.println(IOUtils.toString(r.getInputStream()));
+		context.close();
+	}
+
+}
+
+```
+输出结果
+```
+demoBean
+jhkljhlkjhlkj
+111111111111
+```
