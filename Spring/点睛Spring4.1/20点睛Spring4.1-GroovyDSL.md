@@ -1,6 +1,6 @@
 ## 20.1 Groovy DSL
 - Spring 4.x的一个新特性是使用Groovy的语言来配置Spring的bean;
-- 这以为着我们构造一个spring的bean又多了一种方式,包括如下:
+- 这意味着我们构造一个spring的bean又多了一种方式,包括如下:
  - xml配置
  - java config(@Bean)
  - @Component,@Service,@Repository,@Controller系列
@@ -76,5 +76,4 @@ public class Main {
 输出结果
 ```
 Hello World
-
 ```
