@@ -1,4 +1,4 @@
-## 3.1 @RequestMapping
+## 2.1 @RequestMapping
 - **@RequestMapping**是SpringMVC的核心注解,负责访问的url与调用方法之间的映射;
 - **@RequestMapping**可以放在类和方法上;
  - @RequestMapping的属性produces属性控制response返回的形式;
@@ -10,7 +10,7 @@
 
 
 
-## 3.2 演示
+## 2.2 演示
 - 控制器 `TestController`
 
 ```
