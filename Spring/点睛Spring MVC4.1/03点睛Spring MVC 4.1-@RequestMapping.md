@@ -1,6 +1,10 @@
 ## 3.1 @RequestMapping
 - **@RequestMapping**是SpringMVC的核心注解,负责访问的url与调用方法之间的映射;
 - **@RequestMapping**可以放在类和方法上;
+ - @RequestMapping的属性produces属性控制response返回的形式;
+ - @RequestMapping的属性method属性控制接受访问的类型,不写不做限制,本例为演示方便全部都是get请求;
+- **@ResponseBody**将方法参数放置在web body的body中(返回的不是页面而是你所控制的字符)
+- **@RequestBody**将方法参数放置在web request的body中(如提交一个json对象作为参数)
 - 这节使用**@RequestMapping**演示常用映射场景
 
 
