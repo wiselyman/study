@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-@Service
+
 public class DemoInteceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -63,8 +63,6 @@ import com.wisely.interceptors.DemoInteceptor;
 @EnableWebMvc
 public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 
-	@Autowired
-	private DemoInteceptor demoInteceptor;
 
 	@Bean
 	public UrlBasedViewResolver viewResolver(){
@@ -77,7 +75,12 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-	registry.addInterceptor(demoInteceptor);
+	registry.addInterceptor(demoInteceptor());
+	}
+
+	@Bean
+	public DemoInteceptor demoInteceptor(){
+		return new DemoInteceptor();
 	}
 
 }
