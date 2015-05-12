@@ -49,7 +49,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.prepost");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.prepost");
 		context.close();
 
 	}

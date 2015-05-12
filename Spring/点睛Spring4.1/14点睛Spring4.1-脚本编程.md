@@ -72,7 +72,8 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:com/wisely/script/script.xml")//加载groovybean的配置文件
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.script");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.script");
 		DemoService ds = context.getBean(DemoService.class);
 
 		System.out.println(ds.sayHello());

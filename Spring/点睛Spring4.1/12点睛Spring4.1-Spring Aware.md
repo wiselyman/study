@@ -65,7 +65,8 @@ import org.springframework.core.io.ResourceLoader;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.aware");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.aware");
 		DemoBean db = context.getBean(DemoBean.class);
 		System.out.println(db.getName());
 		ResourceLoader rl = db.getLoader();

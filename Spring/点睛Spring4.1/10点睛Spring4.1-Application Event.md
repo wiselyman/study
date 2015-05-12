@@ -1,4 +1,4 @@
-## 10.1 Application Event
+zsy## 10.1 Application Event
 - Springle使用Application Event给bean之间的消息通讯提供了手段
 - 应按照如下部分实现bean之间的消息通讯
  - 继承ApplicationEvent类实现自己的事件
@@ -63,7 +63,8 @@ import org.springframework.stereotype.Component;
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.event");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.event");
 		Main main =context.getBean(Main.class);
 		main.pulish(context);
 		context.close();

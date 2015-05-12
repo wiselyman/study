@@ -54,7 +54,8 @@ public class Main {
 	MessageSource messageSource;
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.i18n");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.i18n");
 		String nameEn = context.getMessage("wisely.name",null, Locale.US);
 		String nameCn = context.getMessage("wisely.name",null, Locale.CHINA);
 		System.out.println("nameEN="+nameEn);

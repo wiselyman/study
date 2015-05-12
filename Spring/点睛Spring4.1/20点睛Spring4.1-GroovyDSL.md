@@ -63,7 +63,8 @@ import org.springframework.context.annotation.ImportResource;
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.dsl");
+		AnnotationConfigApplicationContext context =
+               new AnnotationConfigApplicationContext("com.wisely.dsl");
 		DemoService ds =context.getBean(DemoService.class);
 		System.out.println(ds.sayHello());
 		context.close();

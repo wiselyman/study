@@ -87,7 +87,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.springel");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.springel");
 		DemoService ds = context.getBean(DemoService.class);
 		System.out.println("注入操作系统属性："+ds.getSystemProperties());
 		System.out.println("注入操作系统名称: "+ds.getOsName());

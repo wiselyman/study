@@ -57,7 +57,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.propertyeditor");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.propertyeditor");
 		DemoBean demoBean = context.getBean(DemoBean.class);
 		System.out.println(demoBean.getDemoDate());
 		context.close();
@@ -173,7 +174,8 @@ public class Demo2Config {
 	@Bean
 	public CustomEditorConfigurer editorConfigurer(){
 		CustomEditorConfigurer editorConfigurer = new CustomEditorConfigurer();
-		Map<Class<?>, Class<? extends PropertyEditor>> customEditors = new HashMap<Class<?>, Class<? extends PropertyEditor>>();
+		Map<Class<?>, Class<? extends PropertyEditor>> customEditors =
+        		new HashMap<Class<?>, Class<? extends PropertyEditor>>();
 		customEditors.put(DemoBean2.class, DemoPropertyEditor.class);
 		editorConfigurer.setCustomEditors(customEditors);
 		return editorConfigurer;
@@ -192,7 +194,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.propertyeditor");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.propertyeditor");
 		DemoBean demoBean = context.getBean(DemoBean.class);
 		System.out.println(demoBean.getDemoBean2().getName()+"///"+demoBean.getDemoBean2().getAddress());
 		context.close();

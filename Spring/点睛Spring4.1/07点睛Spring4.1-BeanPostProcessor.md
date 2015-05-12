@@ -74,10 +74,14 @@ public class Main {
 ```
 输出结果为:
 ```
-在 DemoAllBeanPostProcessor的postProcessBeforeInitialization方法里处理bean: demoNormal1Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal1Service
-在 DemoAllBeanPostProcessor的postProcessAfterInitialization方法里处理bean: demoNormal1Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal1Service
-在 DemoAllBeanPostProcessor的postProcessBeforeInitialization方法里处理bean: demoNormal2Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal2Service
-在 DemoAllBeanPostProcessor的postProcessAfterInitialization方法里处理bean: demoNormal2Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal2Service
+在 DemoAllBeanPostProcessor的postProcessBeforeInitialization方法里处理bean:
+demoNormal1Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal1Service
+在 DemoAllBeanPostProcessor的postProcessAfterInitialization方法里处理bean:
+demoNormal1Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal1Service
+在 DemoAllBeanPostProcessor的postProcessBeforeInitialization方法里处理bean:
+demoNormal2Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal2Service
+在 DemoAllBeanPostProcessor的postProcessAfterInitialization方法里处理bean:
+demoNormal2Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal2Service
 ```
 
 
@@ -132,7 +136,8 @@ public class DemoSelectedBeanPostProcessor implements BeanPostProcessor {
 			throws BeansException {
 		if(bean instanceof  DemoSelectedService){
 			((DemoSelectedService) bean).setOs("Linux");
-			System.out.println("在DemoSelectedBeanPostProcessor的postProcessBeforeInitialization中将os从windows修改成了Linux" );
+			System.out.println("在DemoSelectedBeanPostProcessor的"
+            +"postProcessBeforeInitialization中将os从windows修改成了Linux" );
 		}
 		return bean;
 	}
@@ -141,7 +146,8 @@ public class DemoSelectedBeanPostProcessor implements BeanPostProcessor {
 			throws BeansException {
 		if(bean instanceof  DemoSelectedService){
 			((DemoSelectedService) bean).setOs("Linux");
-			System.out.println("在DemoSelectedBeanPostProcessor的postProcessBeforeInitialization中将num从123修改成了456" );
+			System.out.println("在DemoSelectedBeanPostProcessor的"+
+            "postProcessBeforeInitialization中将num从123修改成了456" );
 		}
 		return bean;
 	}
@@ -158,7 +164,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.beanpostprocessor");
+		AnnotationConfigApplicationContext context =
+                 new  AnnotationConfigApplicationContext("com.wisely.beanpostprocessor");
 		DemoSelectedService dss = context.getBean(DemoSelectedService.class);
 		System.out.println("os确实被修改成了"+dss.getOs());
 		System.out.println("num确实被修改成了"+dss.getNum());

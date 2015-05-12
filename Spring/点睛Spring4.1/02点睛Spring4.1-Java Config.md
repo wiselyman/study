@@ -1,5 +1,7 @@
 ## 1.1 java config
-- 使用上例建立的testMavenSpring项目,将pom.xml文件中的`<spring-framework.version>3.2.3.RELEASE</spring-framework.version>`修改为`4.1.5.RELEASE`,然后项目->右键->maven->update project;
+- 使用上例建立的testMavenSpring项目,将pom.xml文件中的
+`<spring-framework.version>3.2.3.RELEASE</spring-framework.version>`修改为`4.1.5.RELEASE`,
+然后项目->右键->maven->update project;
 - spring的java config主要使用**@Configuration**和**@Bean**两个注解;
  - 使用**@Configuration**注解在类上声明是一个配置类(相当于一个spring的配置xml);
  - 使用**@Bean**注解在方法上,返回值是一个类的实例,并声明这个返回值是spring的一个bean,bean的name是方法名;
@@ -17,7 +19,7 @@
 
 ## 1.3 演示
 
-### 1.3.1 创建一个properties文件作为配置
+### 1.3.1 创建一个properties(test.properties)文件作为配置
 
 ```
 wisely.word = World
@@ -25,6 +27,8 @@ wisely.word = World
 
 ### 1.3.2 创建一个java class
 ```
+package com.wisely.javaconfig;
+
 public class DemoService {
 	private String word;
 
@@ -78,8 +82,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		//设定此包下的类被注册成spring的bean,包含@Configuration,@Component,@Service,@Repository,@Controller
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.javaconfig");
+		//设定此包下的类被注册成spring的bean,
+        //包含@Configuration,@Component,@Service,@Repository,@Controller
+		AnnotationConfigApplicationContext context =
+        					new AnnotationConfigApplicationContext("com.wisely.javaconfig");
 		DemoService demoService = context.getBean(DemoService.class);
 		System.out.println(demoService.sayHello());
 		context.close();

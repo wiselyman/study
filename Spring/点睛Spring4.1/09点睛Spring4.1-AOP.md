@@ -135,7 +135,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.aop");
+		AnnotationConfigApplicationContext context =
+        		new AnnotationConfigApplicationContext("com.wisely.aop");
 		Demo1Service d1s = context.getBean(Demo1Service.class);
 		d1s.add();
 		d1s.remove();

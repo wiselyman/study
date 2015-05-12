@@ -46,6 +46,7 @@ import org.springframework.core.env.Environment;
 
 //@Configuration //声明是一个配置类
 //@PropertySource("com/wisely/javaconfig/test.properties")
+@WiselyMetaAnnotation
 public class DemoConfig {
 
 	@Bean //声明是一个bean
@@ -67,7 +68,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.meta");
+		AnnotationConfigApplicationContext context =
+              new AnnotationConfigApplicationContext("com.wisely.meta");
 		DemoService demoService = context.getBean(DemoService.class);
 		System.out.println(demoService.sayHello());
 		context.close();

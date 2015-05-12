@@ -1,7 +1,7 @@
 ## 4.1 Resource
 - spring用来调用外部资源数据的方式
 - 支持调用文件或者是网址
-- 在系统中调用properties文件可参考<<02点睛Spring4.1-Java Config>>中结合**@PropertySource**和E**nvironment**来使用
+- 在系统中调用properties文件可参考<<02点睛Spring4.1-Java Config>>中结合**@PropertySource**和**Environment**来使用
 - 也可以使用@Value来注入资源,@Value的使用将在<<13点睛Spring4.1-Spring EL>>章节中有更详细的使用
 
 ## 4.2 示例
@@ -45,13 +45,14 @@ public class Main {
 	private Resource info;
 
 	public static void main(String[] args) throws IOException {
-		AnnotationConfigApplicationContext context =  new AnnotationConfigApplicationContext("com.wisely.resource");
+		AnnotationConfigApplicationContext context =
+        				new AnnotationConfigApplicationContext("com.wisely.resource");
 		Main main = context.getBean(Main.class);
 		System.out.println(main.injectInfo());
 		System.out.println("----------------------------");
 
 		//classpath: spring的一个模拟协议,类似于http：
-		Resource file = context.getResource("classpath:com/wisely/resource/info.txt"); 
+		Resource file = context.getResource("classpath:com/wisely/resource/info.txt");
 		System.out.println(IOUtils.toString(file.getInputStream()));
 		System.out.println("----------------------------");
 
