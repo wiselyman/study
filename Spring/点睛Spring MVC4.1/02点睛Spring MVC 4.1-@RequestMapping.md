@@ -58,7 +58,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller //声明为控制器bean
 @RequestMapping("/test")// 根地址为http://localhost:8080/testSpringMVC/test
 public class TestController {
-	@RequestMapping(produces = "text/plain;charset=UTF-8") //response类型为text/plain,编码是utf-8
+	//response媒体类型(MediaType)为text/plain,编码是utf-8
+	@RequestMapping(produces = "text/plain;charset=UTF-8")
     //映射地址为http://localhost:8080/testSpringMVC/test
 	@ResponseBody //此注解让返回值不是页面,也是将结果字符串直接返回
 	public  String root(HttpServletRequest request){

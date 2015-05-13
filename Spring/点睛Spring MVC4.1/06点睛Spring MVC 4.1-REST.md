@@ -10,6 +10,9 @@
   - GET:读取
   - PUT/PATCH:更新
   - DELETE:删除
+- `produces`的内容是指定返回的媒体类型让浏览器识别
+  - 如返回text/plain的话,浏览器上的js回掉拿到的是字符串,需要自己转换对象;
+  - 如返回application/json的话,浏览器上的js拿到的就是js对象而不是字符串,就不需要进行转换;
 
 - 本例演示向控制器提交json数据,返回结果分别为json和xml格式;
 
