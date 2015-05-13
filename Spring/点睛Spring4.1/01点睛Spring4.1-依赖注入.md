@@ -1,4 +1,7 @@
 ## 1.1 声明bean
+- 使用上例建立的testMavenSpring项目,将pom.xml文件中的
+`<spring-framework.version>3.2.3.RELEASE</spring-framework.version>`修改为`4.1.5.RELEASE`,
+然后项目->右键->maven->update project;
 - spring利用**@Configuration,@Component,@Service,@Repository,@Controller**注解在一个java类上声明是spring容器的bean;
 - 使用**@Configuration,@Component,@Service,@Repository,@Controller**任意一个在类上效果是等同的,不同的名称是为了更好的标志类的角色和功能,避免代码维护者混淆代码作用;
 - 那我们使用这四个注解的准则是什么呢?
