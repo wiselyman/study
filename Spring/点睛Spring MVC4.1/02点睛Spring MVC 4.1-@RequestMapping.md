@@ -79,7 +79,44 @@ public class TestController {
 
 	}
 
+	//从json中获得对象
+	@RequestMapping(value = "/json",produces = "text/plain;charset=UTF-8")//映射路径http://.../test/json
+	@ResponseBody
+	public String passJson(@RequestBody DemoObj obj,HttpServletRequest request){
+		System.out.println("对象的id和名称分别为为："+obj.getId()+"/"+obj.getName());
+		return "url:"+request.getRequestURL()+" 可以访问此方法";
+
+	}
+
+
 
 }
 
 ```
+
+- 从json中获取对象:此处有额外部分
+  - 添加**jackson-databind**依赖,spring根据此包会自动将json字符串转换为对象接受
+   ```
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.5.3</version>
+    </dependency>
+   ```
+  - 对应页面代码
+   ```
+    var json = {"id":456,"name":"phy"};
+
+    $.ajax({
+      url: "test/json",
+      data: JSON.stringify(json),
+      type:"POST",
+      contentType:"application/json",
+      success: function(data){
+          console.log(data)
+      }
+    });
+   ```
+ - 效果
+ ![](resources/2-1.jpg)
+ ![](resources/2-2.jpg)
