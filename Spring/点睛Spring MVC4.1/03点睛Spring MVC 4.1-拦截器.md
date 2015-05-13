@@ -72,12 +72,12 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
         resolver.setViewClass(JstlView.class);
         return resolver;
 	}
-
+    //注册拦截器
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 	registry.addInterceptor(demoInteceptor());
 	}
-
+	//自定义拦截器
 	@Bean
 	public DemoInteceptor demoInteceptor(){
 		return new DemoInteceptor();

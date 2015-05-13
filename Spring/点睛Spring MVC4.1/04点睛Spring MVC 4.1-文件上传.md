@@ -91,7 +91,7 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
-	//文件上传设置
+	//文件上传设置--在此处
 	@Bean
 	public MultipartResolver multipartResolver() {
 	    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();

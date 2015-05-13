@@ -88,7 +88,7 @@
 			<version>${logback.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>	
+	</dependencies>
 	<groupId>com.wisely</groupId>
 	<build>
 		<plugins>
@@ -137,7 +137,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @EnableWebMvc
 public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 
-
+    //名称与实际的页面的映射
+    // return "index" ; 实际返回的页面是/WEB-INF/views/index.jsp
 	@Bean
 	public UrlBasedViewResolver viewResolver(){
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
