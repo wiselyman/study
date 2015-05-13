@@ -1,9 +1,9 @@
-## 3.1 拦截器
+## 4.1 拦截器
 - 拦截器实现了对每一个请求处理之前和之后进行相关的处理,类似于Servlet的filter;
 - 可以实现**HandlerInterceptor**接口或者继承**HandlerInterceptorAdapter**类;
 - 继承**HandlerInterceptorAdapter**类,因为使用接口要实现接口的所有方法;
 
-## 3.2 示例
+## 4.2 示例
 
 - 新建拦截器
 

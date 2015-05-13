@@ -1,10 +1,10 @@
-## 4.1 文件上传
+## 6.1 文件上传
 
 - 在控制器参数使用`@RequestParam("file") MultipartFile file`接受单个文件上传;
 - 在控制器参数使用`@RequestParam("file") MultipartFile[] files`接受多个文件上传;
 - 通过配置`MultipartResolver`来配置文件上传的一些属性;
 
-## 4.2 示例
+## 6.2 示例
 
 - 增加和上传和文件操作的依赖到maven
 

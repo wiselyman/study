@@ -4,7 +4,11 @@
  - @RequestMapping的属性produces属性控制response返回的形式;
  - @RequestMapping的属性method属性控制接受访问的类型,不写不做限制,本例为演示方便全部都是get请求;
 - **@ResponseBody**(放在方法上或者返回值类型前)将方法参数放置在web body的body中(返回的不是页面而是你所控制的字符)
-- **@RequestBody**(放在方法参数前)将方法参数放置在web request的body中(如提交一个json对象作为参数-在`06点睛Spring MVC 4.1-REST`演示)
+- **@RequestBody**(放在方法参数前)将方法参数放置在web request的body中(如提交一个json对象作为参数-在`03点睛Spring MVC 4.1-REST`演示)
+- `produces`的内容是指定返回的媒体类型让浏览器识别
+  - 如返回text/plain的话,chrome浏览器下network显示Response的`Content-Type:text/plain`;
+  - 如返回application/json的话,chrome浏览器下network显示Response的`application/json`;
+  - 因本节无页面,在`03点睛Spring MVC 4.1-REST`有只管的阐述和演示;
 - 这节使用**@RequestMapping**演示常用映射场景
 
 

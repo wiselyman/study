@@ -1,4 +1,4 @@
-## 6.1 REST
+## 3.1 REST
 - REST:Representational State Transfer;
 - REST是一种数据导向web service,相对于SOAP是一种操作操作和处理导向的web service;
 - Spring为对REST的支持提供了@RestController;
@@ -16,9 +16,9 @@
 
 - 本例演示向控制器提交json数据,返回结果分别为json和xml格式;
 
-## 6.2 示例
+## 3.2 示例
 
-### 6.2.1 @RestController源码
+### 3.2.1 @RestController源码
 
 从@RestController看出,@RestController是一个元注解,组合了@Controller,@ResponseBody,相当于同时使用了@Controller
 @ResponseBody
@@ -42,7 +42,7 @@ public @interface RestController {
 }
 ```
 
-### 6.2.2 代码
+### 3.2.2 代码
 
 - 添加jackson依赖
 
