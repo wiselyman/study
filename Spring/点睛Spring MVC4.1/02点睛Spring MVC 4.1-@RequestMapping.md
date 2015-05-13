@@ -4,13 +4,44 @@
  - @RequestMapping的属性produces属性控制response返回的形式;
  - @RequestMapping的属性method属性控制接受访问的类型,不写不做限制,本例为演示方便全部都是get请求;
 - **@ResponseBody**(放在方法上或者返回值类型前)将方法参数放置在web body的body中(返回的不是页面而是你所控制的字符)
-- **@RequestBody**(放在方法参数前)将方法参数放置在web request的body中(如提交一个json对象作为参数)
+- **@RequestBody**(放在方法参数前)将方法参数放置在web request的body中(如提交一个json对象作为参数-在`06点睛Spring MVC 4.1-REST`演示)
 - 这节使用**@RequestMapping**演示常用映射场景
 
 
 
 
 ## 2.2 演示
+
+- 传值对象
+
+```
+package com.wisely.web;
+
+public class DemoObj {
+	private Long id;
+	private String name;
+
+	public DemoObj(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}
+
+```
 - 控制器 `TestController`
 
 ```
@@ -93,30 +124,3 @@ public class TestController {
 }
 
 ```
-
-- 从json中获取对象:此处有额外部分
-  - 添加**jackson-databind**依赖,spring根据此包会自动将json字符串转换为对象接受
-   ```
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.5.3</version>
-    </dependency>
-   ```
-  - 对应页面代码
-   ```
-    var json = {"id":456,"name":"phy"};
-
-    $.ajax({
-      url: "test/json",
-      data: JSON.stringify(json),
-      type:"POST",
-      contentType:"application/json",
-      success: function(data){
-          console.log(data)
-      }
-    });
-   ```
- - 效果
- ![](resources/2-1.jpg)
- ![](resources/2-2.jpg)

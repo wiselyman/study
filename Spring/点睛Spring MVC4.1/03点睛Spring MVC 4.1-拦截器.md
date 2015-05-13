@@ -35,7 +35,7 @@ public class DemoInteceptor extends HandlerInterceptorAdapter {
 		long startTime = (Long) request.getAttribute("startTime");
 		request.removeAttribute("startTime");
 		long endTime = System.currentTimeMillis();
-		modelAndView.addObject("handlingTime", endTime - startTime);
+		request.setAttribute("handlingTime", endTime - startTime);
 	}
 }
 
