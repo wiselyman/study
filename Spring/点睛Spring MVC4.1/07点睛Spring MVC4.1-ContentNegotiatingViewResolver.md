@@ -2,7 +2,8 @@
 - ContentNegotiatingViewResolver支持在Spring MVC下输出不同的格式;
 - ContentNegotiatingViewResolver是ViewResolver的一个实现;
 - ContentNegotiatingViewResolver使用request的媒体类型,根据扩展名选择不同的view输出不同的格式;
-- ContentNegotiatingViewResolver不是自己处理view,而是代理给不同的ViewResolver来处理不同的view
+- ContentNegotiatingViewResolver不是自己处理view,而是代理给不同的ViewResolver来处理不同的view;
+- 本例演示根据扩展名获得不同的页面;
 - jsp
   - view:`WEB-INF/views/demoObj.jsp`
   - viewResolver:`UrlBasedViewResolver`或`InternalResourceViewResolver`
