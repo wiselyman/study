@@ -3,9 +3,10 @@
 - Spring Boot几乎或者很少使用配置;
 - 使用**@Conditional**实现了Spring Boot的自动配置功能;
 - Spring Boot内嵌了servlet容器(tomcat或jetty),这意味着spring boot项目可独立运行而不需要额外的servlet容器;
-- Spring Boot可以独立以jar包形式运行(`java -jar xx/jar`)
+- Spring Boot可以独立以jar包形式运行(`java -jar xx.jar`)
 - Spring Boot给java语言带来了`ruby on rails`这样动态语言的飞一般开发速度;
 - 本教程基于maven和IntelliJ IDEA演示;
+
 ## 0.2 搭建方式
 ### 0.2.1 利用在线模板构建
 - 打开[http://start.spring.io/](http://start.spring.io/)
