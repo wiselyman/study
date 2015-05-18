@@ -17,39 +17,34 @@
  - 使用`starter poms`只需添加相应依赖到`pom.xml`文件,如上例添加的`spring-boot-starter-web`
 
  - 生产环境的监控与管理
-  | 名称 | 描述 |
-|--------|--------|
-| spring-boot-starter-actuator | 开启监控等支持 |
-| spring-boot-starter-remote-shell | 允许远程`ssh`访问 |
+
+ spring-boot-starter-actuator:开启监控等支持
+ spring-boot-starter-remote-shell :允许远程`ssh`访问
 
  - servlet容器
-| 名称 | 描述 |
-|--------|--------|
-|    spring-boot-starter-tomcat    |      内嵌tomcat容器  |
-|    spring-boot-starter-jetty    |     内嵌jetty容器   |
+
+ spring-boot-starter-tomcat:内嵌tomcat容器
+ spring-boot-starter-jetty:内嵌jetty容器
 
  - 日志
-| 名称 | 描述 |
-|--------|--------|
-|    spring-boot-starter-log4j    |      Log4j支持 |
-|    spring-boot-starter-jetty    |     spring boot默认日志(Logback)   |
+
+ spring-boot-starter-log4j:Log4j支持
+ spring-boot-starter-jetty:spring boot默认日志(Logback)
 
  - 模板引擎
- | 名称 | 描述 |
-|--------|--------|
-|spring-boot-starter-freemarker|freemarker模板引擎支持|
-|spring-boot-starter-groovy-templates|groovy模板引擎支持|
-|spring-boot-starter-thymeleaf|thymeleaf模板引擎支持,spring boot推荐|
-|spring-boot-starter-velocity|velocity模板引擎支持|
-|spring-boot-starter-mustache|mustache模板引擎支持|
+
+ spring-boot-starter-freemarker:freemarker模板引擎支持
+ spring-boot-starter-groovy-templates:groovy模板引擎支持
+ spring-boot-starter-thymeleaf:thymeleaf模板引擎支持,spring boot推荐
+ spring-boot-starter-velocity:velocity模板引擎支持
+ spring-boot-starter-mustache:mustache模板引擎支持
 
   - 数据访问
- | 名称 | 描述 |
-|--------|--------|
-|spring-boot-starter-data-jpa|jpa支持|
-|spring-boot-starter-data-mongodb|mongodb支持|
-|spring-boot-starter-jdbc|jdbc支持|
-|spring-boot-starter-redis|redis支持|
+
+ spring-boot-starter-data-jpa:jpa支持
+ spring-boot-starter-data-mongodb:mongodb支持
+ spring-boot-starter-jdbc:jdbc支持
+ spring-boot-starter-redis:redis支持
 
  - 更多的`starter`请参考《spring boot reference》文档
 
