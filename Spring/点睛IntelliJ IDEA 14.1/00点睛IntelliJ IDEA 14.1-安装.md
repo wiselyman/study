@@ -11,6 +11,7 @@
   - `cd idea-IU-141.1010.3/bin`;
   - `./idea.sh`;
   - 若报`Startup Error: Unable to detect graphics environment `,执行`export DISPLAY=:0.0`;
+  - 在初次启动后会有设置创建启动图标;
 ### 0.2.2 初次启动
 - 以前安装过选第一项,以前未安装选第二项;
 ![](resources/0-1.jpg)
