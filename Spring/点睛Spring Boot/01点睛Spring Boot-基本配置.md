@@ -18,7 +18,7 @@
 
  - 生产环境的监控与管理
 
- `spring-boot-starter-actuator:开启监控等支持`
+ `spring-boot-starter-actuator:开启监控等支持`  
  `spring-boot-starter-remote-shell :允许远程`ssh`访问`
 
  - servlet容器
