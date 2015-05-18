@@ -1,5 +1,5 @@
-zsy## 10.1 Application Event
-- Springle使用Application Event给bean之间的消息通讯提供了手段
+## 10.1 Application Event
+- Spring使用Application Event给bean之间的消息通讯提供了手段
 - 应按照如下部分实现bean之间的消息通讯
  - 继承ApplicationEvent类实现自己的事件
  - 实现继承ApplicationListener接口实现监听事件
