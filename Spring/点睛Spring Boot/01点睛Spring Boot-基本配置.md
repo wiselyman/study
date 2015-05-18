@@ -9,7 +9,7 @@
  - 若必须使用xml配置,如遗留项目改造：使用一个注解有`@Configuration`的java类上使用`@ImportResource`
 
 - 可执行jar包
- - spring boot的jar包含内嵌serlet容器,网页资源等,可独立运行;
+ - spring boot的jar包含内嵌servlet容器,网页资源等,可独立运行;
  - 使用`spring-boot-maven-plugin`生成可执行jar包;
 
 - `starter poms`
@@ -100,4 +100,36 @@ public @interface SpringBootApplication {
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MyConfiguration {
 }
+```
+1.1.4 定制banner
+- spring boot图案定制
+ - spring boot默认启动会出现下图案
+```
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.2.3.RELEASE)
+```
+
+ - 在classpath下新建banner.txt,我放置在src/main/resources/下
+ - 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
+ - 复制到banner.txt
+ - 效果
+ ![](resources/2-1.jpg)
+
+- 关闭banner
+ - main里的内容修改为
+```
+SpringApplication app = new SpringApplication(DemoBootApplication.class, args);
+app.setShowBanner(false);
+app.run(args);
+```
+ - 或使用fluent api修改为
+```
+ new SpringApplicationBuilder()
+                .showBanner(false)
+                .run(args);
 ```
