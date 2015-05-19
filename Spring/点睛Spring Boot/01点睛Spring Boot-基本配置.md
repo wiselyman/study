@@ -100,7 +100,8 @@ public class MyConfiguration {
 
 ### 1.1.4 定制banner
 - spring boot图案定制
- - spring boot默认启动会出现下图案
+ 1. spring boot默认启动会出现下图案
+
 ```
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -111,10 +112,10 @@ public class MyConfiguration {
  :: Spring Boot ::        (v1.2.3.RELEASE)
 ```
 
-  - 在classpath下新建banner.txt,我放置在src/main/resources/下
-  - 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
-  - 复制到banner.txt
-  - 效果  
+ 2. 在classpath下新建banner.txt,我放置在src/main/resources/下
+ 3. 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
+ 4. 复制到banner.txt
+ 5. 效果  
  ![](resources/2-1.jpg)
 
 - 关闭banner
