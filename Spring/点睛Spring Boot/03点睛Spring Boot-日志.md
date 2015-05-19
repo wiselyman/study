@@ -36,7 +36,7 @@ logging.level.org.springframework.web: DEBUG
 2.D盘截图  
 ![](resources/3-1.jpg)
 
-3.使用错误路径访问程序测试日志级别(http://localhost:8080/xx)
+3.使用错误路径访问程序测试日志级别(http://localhost:8080/x)
  - 在没有添加`logging.level.org.springframework.web: DEBUG`情况下控制台无任何反应
  - 添加后显示如下  
  ![](resources/3-2.jpg)
