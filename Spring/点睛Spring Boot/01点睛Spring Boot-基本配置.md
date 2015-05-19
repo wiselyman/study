@@ -111,10 +111,10 @@ public class MyConfiguration {
  :: Spring Boot ::        (v1.2.3.RELEASE)
 ```
 
- - 在classpath下新建banner.txt,我放置在src/main/resources/下
- - 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
- - 复制到banner.txt
- - 效果  
+  - 在classpath下新建banner.txt,我放置在src/main/resources/下
+  - 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
+  - 复制到banner.txt
+  - 效果  
  ![](resources/2-1.jpg)
 
 - 关闭banner
