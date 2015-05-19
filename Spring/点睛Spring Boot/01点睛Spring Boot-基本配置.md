@@ -124,7 +124,7 @@ app.run(args);
 ```
  - 或使用fluent api修改为
 ```
- new SpringApplicationBuilder()
+ new SpringApplicationBuilder(DemoBootApplication.class)
                 .showBanner(false)
                 .run(args);
 ```
