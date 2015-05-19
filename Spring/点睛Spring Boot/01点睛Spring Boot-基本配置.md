@@ -98,8 +98,8 @@ public class MyConfiguration {
 }
 ```
 
-### 1.1.4 定制banner
-- spring boot图案定制
+### 1.1.4 定制banner  
+- spring boot图案定制  
  1.spring boot默认启动会出现下图案  
 
 ```
@@ -118,7 +118,7 @@ public class MyConfiguration {
  5.效果  
  ![](resources/2-1.jpg)
 
-- 关闭banner
+- 关闭banner  
  1.main里的内容修改为  
 ```
 SpringApplication app = new SpringApplication(DemoBootApplication.class, args);
