@@ -23,10 +23,11 @@ logging.level.org.springframework.web: DEBUG
 ### 3.2.1 添加配置
 
 - application.properties  
+
 ```
 logging.file=D:/mylog/log.log
 logging.level.org.springframework.web: DEBUG
-``
+```
 
 ### 3.2.2 测试
 
