@@ -89,6 +89,7 @@ public @interface SpringBootApplication {
 
 ### 1.1.3 关闭特定的自动配置
 - 自动配置是非入侵式的,任何时候你都可以用自己的配置替代自动配置;
+
 ```
 @Configuration
 //关闭数据源自动配置
@@ -96,7 +97,8 @@ public @interface SpringBootApplication {
 public class MyConfiguration {
 }
 ```
-1.1.4 定制banner
+
+### 1.1.4 定制banner
 - spring boot图案定制
  - spring boot默认启动会出现下图案
 ```
@@ -112,7 +114,7 @@ public class MyConfiguration {
  - 在classpath下新建banner.txt,我放置在src/main/resources/下
  - 打开网站http://patorjk.com/software/taag 输入你要用的字符(WiselySoft)
  - 复制到banner.txt
- - 效果
+ - 效果  
  ![](resources/2-1.jpg)
 
 - 关闭banner

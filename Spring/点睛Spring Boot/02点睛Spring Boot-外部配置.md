@@ -44,8 +44,11 @@
 
 ## 2.2 演示
 
-- 本例的author.proerties内容可直接放置在application.properties中,此时无需`locations = {"classpath:config/author.properties"}`
-- 本例的reader.yml内容可直接放置在application.yml中,此时无需`locations = {"classpath:config/reader.yml"}`
+- 本例的author.proerties内容可直接放置在application.properties中
+ - 此时无需`locations = {"classpath:config/author.properties"}`
+ 
+- 本例的reader.yml内容可直接放置在application.yml中
+ - 此时无需`locations = {"classpath:config/reader.yml"}`
 
 ### 2.2.1 自定义properties配置文件
 - `src/resources/config/author.properties`  
