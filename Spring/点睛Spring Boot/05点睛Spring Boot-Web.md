@@ -63,7 +63,7 @@
 
 ## 5.2 演示
 - 5.2.1 自定义HttpMessageConverters
-- 5.2.2 自定义Spring MVC配置
+- 5.2.2 自定义interceptor拦截器
 - 5.2.3 添加自定义静态资源
 - 5.2.4 演示不针对特定的servlet容器的定制
 - 5.2.5 演示针对tomcat的容器定制
@@ -219,6 +219,62 @@ public class TestConverterController {
  - ![](resources/5-3.jpg)  
 
  - ![](resources/5-4.jpg)  
+
+### 5.2.2 注册自定义拦截器
+
+- 自定义拦截器
+
+```
+package com.wisely.demoboot.interceptors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+public class WiselyInteceptor extends HandlerInterceptorAdapter {
+	@Override
+	public boolean preHandle(HttpServletRequest request,
+			HttpServletResponse response, Object handler) throws Exception {
+		System.out.println("request processed");
+		long startTime = System.currentTimeMillis();
+		request.setAttribute("startTime", startTime);
+		return true;
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest request,
+			HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		System.out.println("response processed");
+		long startTime = (Long) request.getAttribute("startTime");
+		request.removeAttribute("startTime");
+		long endTime = System.currentTimeMillis();
+		request.setAttribute("handlingTime", endTime - startTime);
+	}
+}
+
+```
+
+- 注册此拦截器
+ - 在`WiselyMvcConfig`重载`addInterceptors`方法
+
+ ```
+ @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new WiselyInteceptor());
+    }
+ ```
+
+- 测试页面
+ - 使用上面的`testConverter.html`
+ - 添加
+ ```
+ 当前请求处理时间为:<div th:text="${handlingTime}"></div>ms<br/>
+ ```
+
+- 测试
+![](resources/5-5.jpg)
 
 ### 5.2.4 演示不针对特定的servlet容器的定制
 
