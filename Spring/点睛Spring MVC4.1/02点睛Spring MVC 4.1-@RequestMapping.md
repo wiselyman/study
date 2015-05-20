@@ -24,7 +24,11 @@ package com.wisely.web;
 public class DemoObj {
 	private Long id;
 	private String name;
-
+	
+	public DemoObj() {
+		super();
+	}
+	
 	public DemoObj(Long id, String name) {
 		super();
 		this.id = id;

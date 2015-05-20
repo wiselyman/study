@@ -1,4 +1,132 @@
-A SpringApplication will attempt to create the right type of ApplicationContext
-on your behalf. By default, an AnnotationConfigApplicationContext or
-AnnotationConfigEmbeddedWebApplicationContext will be used, depending on whether you
-are developing a web application or not.
+## 5.1 Spring Boot的MVC开发
+### 5.1.1 Spring MVC的自动配置
+- 包含`ContentNegotiatingViewResolver`和`BeanNameViewResolver`
+
+- 支持发布静态资源和webjars
+ - 在classpath下的`/static,/pulic,resources,/META-INF/resources`目录都可以直接访问(静态资源)
+ - 添加静态资源目录通过继承`WebMvcConfigurerAdapter`重载`addResourceHandlers`方法
+ - 采用webjar的jar包,目录中的`/webjars/**`会成为静态资源发布([关于webjar](http://www.webjars.org/),主要将js框架打到jar包里);
+ - 如果我们要打成jar包的话,不要使用`src/main/webapp`,用jar打包方式会忽略此目录;
+
+- 自动注册`Converter,GenericConvert,Formatter`
+
+- 支持`HttpMessageConverters`
+ - Spring MVC通过`HttpMessageConverter`对http request和response进行转换;
+ - 若classpath的包,将会自动支持转换request中的json,xml为对象,或转换对象为json,xml到response中;
+ - 若需增加自定义的converter,只需定义`HttpMessageConverters`的`@Bean`
+
+- 自动注册`MessageCodesResolver`
+
+- 支持静态`index.html`
+
+- 自定义favicon的支持
+
+### 5.1.2 接管Spring MVC的自动配置
+- 完全接管: 在一个注解有`@Configuration`的配置类上使用`@EnableWebMVC`注解;
+
+- 部分接管: 如只是添加额外的拦截器一类的
+ - 让一个注解有`@Configuration`的配置类继承`WebMvcConfigurerAdapter`;
+ - 添加`@Bean`来注册你的拦截器一类的配置;
+ - 不需要使用@EnableWebMVC;
+
+### 5.1.3 模板引擎支持
+- Spring boot支持以下模板引擎
+ - FreeMarker
+ - Groovy
+ - Thymeleaf(Spring Boot推荐)
+ - Velocity
+ - Mustache
+ - 关于JSP：jsp在内嵌servlet容器有些问题(以jar形式运行),在spring boot里尽量避免使用jsp
+
+- 页面默认位置:无论使用哪种模板引擎,模板页面默认放置在:`src/main/resources/templates`
+
+### 5.1.4 定制内嵌servlet容器
+
+- 通过`application.properties`
+ - **《spring boot reference》Part X. Appendices** `server`打头的配置
+ - 如:  
+ ```
+ server.port=8080
+ server.address= # bind to a specific NIC
+ server.session-timeout= # session timeout in seconds
+ ```
+ - 功能实现请查看:`org.springframework.boot.autoconfigure.web.ServerProperties.java`
+ 
+- 不针对特定的servlet容器:定义一个实现`EmbeddedServletContainerCustomizer`接口的bean
+
+- 针对特定的servlet容器,定义`EmbeddedServletContainerFactory`的`@Bean`
+ - tomcat: 返回`TomcatEmbeddedServletContainerFactory`的实例
+ - jetty: 返回`JettyEmbeddedServletContainerFactory`的实例
+ - undertow: 返回`UndertowEmbeddedServletContainerFactory`的实例
+
+### 5.1.5 注册Servlet,Filter,Listener
+
+- 注册Servlet:定义一个`ServletRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+
+- 注册Filter:定义一个`FilterRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+
+- 注册Listener:定义一个`ServletListenerRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+
+## 5.2 演示
+- 自定义HttpMessageConverters
+- 自定义Spring MVC配置
+- 添加自定义静态资源
+- 演示不针对特定的servlet容器的定制
+- 演示针对tomcat的容器定制
+- 注册Servlet,Filter,Listener
+
+
+### 5.2.1 自定义HttpMessageConverters
+
+
+### 5.2.4 演示不针对特定的servlet容器的定制
+
+- 清空`application.properties`
+
+- 定义`WiselyServletContainer`
+
+```
+package com.wisely.demoboot.config;
+
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+        import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+        import org.springframework.stereotype.Component;
+
+        import java.util.concurrent.TimeUnit;
+
+
+@Component
+public class WiselyServletContainer implements EmbeddedServletContainerCustomizer {
+    @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        container.setPort(9000);
+    }
+}
+
+```
+
+- 测试启动
+
+```
+ Tomcat started on port(s): 9000 (http)
+```
+
+### 5.2.5 演示针对tomcat的容器定制
+
+- 注释上例的@Component(`//@Component`)
+
+- 在`DemoBootApplication`中定义@Bean(只要在注解有@Configutation的类都可)
+```
+   @Bean
+    public EmbeddedServletContainerFactory wiselyTomcatContainer(){
+        TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+        factory.setPort(9999);
+        return factory;
+    }
+```
+
+- 测试启动
+
+```
+Tomcat started on port(s): 9999 (http)
+```
