@@ -33,6 +33,8 @@ spring.profiles.active=production
 此时程序以8080端口启动
 
 ```
-2015-05-20 11:35:42.908  INFO 9160 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
-2015-05-20 11:35:42.911  INFO 9160 --- [main] com.wisely.demoboot.DemoBootApplication  : Started DemoBootApplication in 5.922 seconds (JVM running for 6.748)
+2015-05-20 11:35:42.908  INFO 9160 --- [main] 
+s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
+2015-05-20 11:35:42.911  INFO 9160 --- [main] 
+com.wisely.demoboot.DemoBootApplication  : Started DemoBootApplication in 5.922 seconds (JVM running for 6.748)
 ```
