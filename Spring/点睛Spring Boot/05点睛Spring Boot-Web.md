@@ -1,6 +1,5 @@
 ## 5.1 Spring Boot的MVC开发
 ### 5.1.1 Spring MVC的自动配置
-- 包含`ContentNegotiatingViewResolver`和`BeanNameViewResolver`
 
 - 支持发布静态资源和webjars
  - 在classpath下的`/static,/pulic,resources,/META-INF/resources`目录都可以直接访问(静态资源)
@@ -8,23 +7,18 @@
  - 采用webjar的jar包,目录中的`/webjars/**`会成为静态资源发布([关于webjar](http://www.webjars.org/),主要将js框架打到jar包里);
  - 如果我们要打成jar包的话,不要使用`src/main/webapp`,用jar打包方式会忽略此目录;
 
-- 自动注册`Converter,GenericConvert,Formatter`
 
-- 支持`HttpMessageConverters`
+- 支持`HttpMessageConverters`,默认已注册json,xml等等的converter
  - Spring MVC通过`HttpMessageConverter`对http request和response进行转换;
  - 若classpath的包,将会自动支持转换request中的json,xml为对象,或转换对象为json,xml到response中;
- - 若需增加自定义的converter,只需定义`HttpMessageConverters`的`@Bean`
+ - 若需增加自定义的converter,自定义Converter需继承AbstractHttpMessageConverter
+ - 在继承`WebMvcConfigurerAdapter`的配置类里重载`configureMessageConverters`方法
 
-- 自动注册`MessageCodesResolver`
-
-- 支持静态`index.html`
-
-- 自定义favicon的支持
 
 ### 5.1.2 接管Spring MVC的自动配置
 - 完全接管: 在一个注解有`@Configuration`的配置类上使用`@EnableWebMVC`注解;
 
-- 部分接管: 如只是添加额外的拦截器一类的
+- 部分接管: 如只是添加额外的拦截器,converter一类的
  - 让一个注解有`@Configuration`的配置类继承`WebMvcConfigurerAdapter`;
  - 添加`@Bean`来注册你的拦截器一类的配置;
  - 不需要使用@EnableWebMVC;
@@ -68,16 +62,163 @@
 - 注册Listener:定义一个`ServletListenerRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
 
 ## 5.2 演示
-- 自定义HttpMessageConverters
-- 自定义Spring MVC配置
-- 添加自定义静态资源
-- 演示不针对特定的servlet容器的定制
-- 演示针对tomcat的容器定制
-- 注册Servlet,Filter,Listener
+- 5.2.1 自定义HttpMessageConverters
+- 5.2.2 自定义Spring MVC配置
+- 5.2.3 添加自定义静态资源
+- 5.2.4 演示不针对特定的servlet容器的定制
+- 5.2.5 演示针对tomcat的容器定制
+- 5.2.6 注册Servlet,Filter,Listener
 
 
 ### 5.2.1 自定义HttpMessageConverters
+- 演示需页面,添加thymeleaf模板引擎支持
+ - 去除`spring-boot-starter-web`依赖,因为`spring-boot-starter-thymeleaf`已包含
+```
+  <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+```
+- 在`resources`新建`static`目录放置静态文件,新建`templates`目录放置页面模板
 
+- 自定义`HttpMessageConverter`-`WiselyMessageConverter`
+
+```
+package com.wisely.demoboot.config;
+
+import com.wisely.demoboot.domain.Person;
+import org.springframework.http.HttpInputMessage;
+import org.springframework.http.HttpOutputMessage;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.AbstractHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.util.StreamUtils;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+public class WiselyMessageConverter extends AbstractHttpMessageConverter<Person> {
+    //自定义媒体类型
+    public WiselyMessageConverter(){
+        super(new MediaType("application", "x-wisely", Charset.forName("UTF-8")));
+    }
+    //从request里获得构造Person实例的数据
+    @Override
+    protected Person readInternal(Class<? extends Person> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
+        String temp = StreamUtils.copyToString(inputMessage.getBody(), Charset.forName("UTF-8"));
+        String[] tempArr = temp.split("-");
+        return new Person(tempArr[0],tempArr[1]);
+    }
+
+    //只支持Person类
+    @Override
+    protected boolean supports(Class<?> clazz) {
+        return Person.class.isAssignableFrom(clazz);
+    }
+
+    //将person实例转换成你想要的字符串格式
+    @Override
+    protected void writeInternal(Person person, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
+        String out = "hello:" +person.getFirstName() + "-" + person.getLastName();
+        outputMessage.getBody().write(out.getBytes());
+    }
+
+
+}
+
+```
+
+- 注册自定义的`WiselyMessageConverter`
+ - 新建一个配置类专门覆盖配置mvc的配置
+
+```
+ package com.wisely.demoboot.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.List;
+
+@Configuration
+public class WiselyMvcConfig extends WebMvcConfigurerAdapter {
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        WiselyMessageConverter converter = new WiselyMessageConverter();
+        converters.add(converter);
+    }
+}
+ ```
+
+- 演示控制器
+
+```
+package com.wisely.demoboot;
+
+import com.wisely.demoboot.domain.Person;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+@Controller
+public class TestConverterController {
+    @RequestMapping("/page")
+    public String toPage(){
+        return "testConverter";
+    }
+
+    @RequestMapping(value = "/convert",produces = {"application/x-wisely"})
+    public    @ResponseBody Person convert(@RequestBody Person person){
+        return person;
+    }
+}
+
+
+```
+
+- 演示页面
+ - `src\main\resources\templates\testConverter.html`
+
+```
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<div id="resp"></div><input type="button" onclick="req();" value="请求"/>
+<script src="jquery.js" type="text/javascript"></script>
+<script>
+    function req(){
+        $.ajax({
+            url: "convert",
+            data: "wang-yunfei",
+            type:"POST",
+            contentType:"application/x-wisely",
+            success: function(data){
+                $("#resp").html(data);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
+```
+
+- 测试
+ - ![](resources/5-1.jpg)  
+
+ - ![](resources/5-2.jpg)  
+
+ - ![](resources/5-3.jpg)  
+
+ - ![](resources/5-4.jpg)  
 
 ### 5.2.4 演示不针对特定的servlet容器的定制
 
