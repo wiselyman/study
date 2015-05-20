@@ -53,6 +53,9 @@
 ![](resources/1-7.jpg)
 ![](resources/1-8.jpg)
 
+### 0.2.6 直接使用IntelliJ IDEA新建spring boot 项目
+步骤与使用在线模板一直  
+![](resources/1-11.jpg)
 
 ### 0.2.5 简单演示
 - 在pom.xml里添加对web开发的支持,此处依赖不用加version,因为spring-boot-starter-parent已经对全局的常用jar包的版本做了定义
