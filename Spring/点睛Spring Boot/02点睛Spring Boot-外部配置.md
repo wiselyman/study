@@ -9,10 +9,6 @@
 
 - 至于使用Properties文件还是YAML文件配置看个人喜好,本人习惯于使用properties文件
 
-- **Profile**配置
- - 全局profile配置使用`application-{profile}.properties`(如application-production.properties)
- - 在**application.properties**`spring.profiles.active= production`
-
 
 - application.properties或application.yml主要覆盖配置默认的自动配置
  - 修改程序端口号为80`server.port=80`,默认为8080;
@@ -186,23 +182,3 @@ public class DemoController {
 页面输出结果:
 `wyf/32/phy/27`
 
-## 2.3 演示自定义全局配置(Profile-specific properties)
-### 2.3.1 新建自定义全局配置
-`application-production.properties`,放置位置上文的四个位置皆可,我放置在和`application.properties`同目录  
-```
-server.port=8888 # 默认端口为8080,在此修改为8888
-```
-
-### 2.3.2 修改`application.properties`指定profile
-```
-spring.profiles.active=production
-```
-
-### 2.3.2 测试
-
-此时程序以8080端口启动
-
-```
-2015-05-20 11:35:42.908  INFO 9160 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
-2015-05-20 11:35:42.911  INFO 9160 --- [main] com.wisely.demoboot.DemoBootApplication  : Started DemoBootApplication in 5.922 seconds (JVM running for 6.748)
-```
