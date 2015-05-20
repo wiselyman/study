@@ -9,6 +9,11 @@
 
 - 至于使用Properties文件还是YAML文件配置看个人喜好,本人习惯于使用properties文件
 
+- **Profile**配置
+ - 全局profile配置使用`application-{profile}.properties`
+ - 激活Profile通过在**application.properties**配置`spring.profiles.active= prod`
+ - Profile的相关内容请查看《08点睛Spring4.1-Profile》
+
 - application.properties或application.yml主要覆盖配置默认的自动配置
  - 修改程序端口号为80`server.port=80`,默认为8080;
  - 配置数据库

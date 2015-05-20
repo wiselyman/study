@@ -228,7 +228,7 @@ public class HomeController {
 
 
 ```
-- `src/main/resources/views/index.jsp`
+- `src/main/webapp/WEB-INF/views/index.jsp`
 
 ```
 <%@ page language="java" contentType="text/html; charset=UTF-8"
