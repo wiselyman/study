@@ -55,22 +55,22 @@
 
 ### 5.1.5 注册Servlet,Filter,Listener
 
-- 注册Servlet:定义一个`ServletRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+- 注册Servlet:定义一个`ServletRegistrationBean`的`@Bean`;
 
-- 注册Filter:定义一个`FilterRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+- 注册Filter:定义一个`FilterRegistrationBean`的`@Bean`;
 
-- 注册Listener:定义一个`ServletListenerRegistrationBean`的`@Bean`,Bean继承`ServletContextInitializer`接口
+- 注册Listener:定义一个`ServletListenerRegistrationBean`的`@Bean`;
 
 ## 5.2 演示
-- 5.2.1 自定义HttpMessageConverters
+- 5.2.1 自定义HttpMessageConverter
 - 5.2.2 自定义interceptor拦截器
-- 5.2.3 添加自定义静态资源
+- 5.2.4 添加viewcontroller
 - 5.2.4 演示不针对特定的servlet容器的定制
 - 5.2.5 演示针对tomcat的容器定制
 - 5.2.6 注册Servlet,Filter,Listener
 
 
-### 5.2.1 自定义HttpMessageConverters
+### 5.2.1 自定义HttpMessageConverter
 - 演示需页面,添加thymeleaf模板引擎支持
  - 去除`spring-boot-starter-web`依赖,因为`spring-boot-starter-thymeleaf`已包含
 ```
@@ -276,6 +276,38 @@ public class WiselyInteceptor extends HandlerInterceptorAdapter {
 - 测试
 ![](resources/5-5.jpg)
 
+
+
+### 5.2.3 添加viewcontroller
+- 注册快捷的viewcontroller是页面跳转映射的一种快捷方式,其中只包含简单的跳转没有业务处理逻辑
+
+- 上例的控制器的`/page`跳转到`testConverter`页面,没有业务逻辑处理
+
+- 注释到上例那段代码
+
+```
+//    @RequestMapping("/page")
+//    public String toPage(){
+//        return "testConverter";
+//    }
+```
+
+- 在`WiselyMvcConfig`中重载`addViewControllers`
+
+```
+ @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/page").setViewName("testConverter");
+    }
+```
+
+- 启动测试,访问http://localhost:8080/page
+ - 依然正常访问  
+
+ ![](resources/5-6.jpg)
+
+
+
 ### 5.2.4 演示不针对特定的servlet容器的定制
 
 - 清空`application.properties`
@@ -326,4 +358,29 @@ public class WiselyServletContainer implements EmbeddedServletContainerCustomize
 
 ```
 Tomcat started on port(s): 9999 (http)
+```
+
+### 5.2.6 注册Servlet,Filter,Listener
+
+- 在任意注解有`@Configuration`的配置类中:
+
+
+```
+   @Bean
+    public ServletRegistrationBean servletRegistrationBean(){
+        return new ServletRegistrationBean(new XxServlet(),"/xx/*");
+    }
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter( new YyFilter());
+        registrationBean.setOrder(2);
+        return registrationBean;
+    }
+
+    @Bean
+    public ServletListenerRegistrationBean<ZzListener> zzListenerServletRegistrationBean(){
+        return new ServletListenerRegistrationBean<ZzListener>(new ZzListener());
+    }
+
 ```
