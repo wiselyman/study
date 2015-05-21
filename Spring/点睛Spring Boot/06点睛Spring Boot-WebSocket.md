@@ -196,6 +196,7 @@ public class WsController {
  ```
 
 - 运行测试,访问http://localhost:8080/ws
+
  ![](resources/6-1.jpg)
 
  ![](resources/6-2.jpg)
