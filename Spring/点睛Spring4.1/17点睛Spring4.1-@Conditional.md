@@ -1,4 +1,4 @@
-## 18.1 @Conditional
+## 17.1 @Conditional
 - @Conditional为按照条件配置spring的bean提供了支持,即满足某种条件下,怎么配置对应的bean;
 - 应用场景
   - 当某一个jar包在classpath中的时候,配置某几个bean;
@@ -7,10 +7,10 @@
 - @Conditional为敏捷开发所提倡的原则"习惯优于配置"提供了支持;
 - @Conditional是Spring Boot快速开发框架实现"习惯优于配置"的核心技术;
 
-## 18.2 示例
+## 17.2 示例
 演示在windows和linux系统下,初始化不同的bean,windows和linux作为判断条件;
 
-### 18.2.1 构造判断条件
+### 17.2.1 构造判断条件
 条件的构造需要类实现**Condition**接口,并实现**matches**方法
 - WindowsCondition
 
@@ -51,7 +51,7 @@ public class LinuxCondition implements Condition {
 
 ```
 
-### 18.2.2 编写不同条件下需要的bean
+### 17.2.2 编写不同条件下需要的bean
 
 - 接口
 
@@ -96,7 +96,7 @@ public class LinuxCommandService implements CommandService {
 
 ```
 
-### 18.2.3 编写配置类
+### 17.2.3 编写配置类
 
 ```
 package com.wisely.conditional;
@@ -123,7 +123,7 @@ public class DemoConfig {
 
 ```
 
-### 18.2.4 测试
+### 17.2.4 测试
 
 - windows下
 

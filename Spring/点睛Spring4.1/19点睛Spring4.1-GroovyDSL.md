@@ -1,4 +1,4 @@
-## 20.1 Groovy DSL
+## 19.1 Groovy DSL
 - Spring 4.x的一个新特性是使用Groovy的语言来配置Spring的bean;
 - 这意味着我们构造一个spring的bean又多了一种方式,包括如下:
  - xml配置
@@ -6,9 +6,9 @@
  - @Component,@Service,@Repository,@Controller系列
  - Groovy DSL
 
-## 20.2 示例
+## 19.2 示例
 
-### 20.2.1 演示类
+### 19.2.1 演示类
 
 ```
 package com.wisely.dsl;
@@ -32,7 +32,7 @@ public class DemoService {
 
 ```
 
-### 20.2.2 使用groovy配置DemoService为bean
+### 19.2.2 使用groovy配置DemoService为bean
 
 - DemoConfig.groovy
 
@@ -49,7 +49,7 @@ beans{
 
 ```
 
-### 20.2.3 测试
+### 19.2.3 测试
 
 ```
 package com.wisely.dsl;
