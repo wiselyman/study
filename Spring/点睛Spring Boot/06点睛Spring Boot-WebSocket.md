@@ -158,7 +158,8 @@ public class WsController {
         stompClient.connect({}, function(frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/getResponse', function(respnose){//订阅/topic/getResponse
+            //订阅/topic/getResponse
+            stompClient.subscribe('/topic/getResponse', function(respnose){
                 showResponse(JSON.parse(respnose.body).responseMessage);
             });
         });
@@ -174,7 +175,8 @@ public class WsController {
 
     function sendName() {
         var name = $('#name').val();
-        stompClient.send("/app/welcome", {}, JSON.stringify({ 'name': name }));//向控制器发送数据
+        //向控制器发送数据
+        stompClient.send("/app/welcome", {}, JSON.stringify({ 'name': name }));
     }
 
     function showResponse(message) {
