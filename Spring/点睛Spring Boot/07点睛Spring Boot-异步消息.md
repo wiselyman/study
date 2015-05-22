@@ -5,7 +5,12 @@
 
 - 消息发送支持点对点(point-to-point)和订阅发布式(publish-suscribe)
 
+- 在实际项目中信息发送者和接受者应该分开的,下面示例为了简单都写在一个程序里了
+
 ## 7.2 演示
+- 7.2.1 JMS
+- 7.2.2 AMQP
+
 ### 7.2.1 JMS
 - 使用程序内置的ActiveMQ server
 
@@ -43,12 +48,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Receiver {
-    @Autowired
-    ConfigurableApplicationContext context;
+
 
     //从目的地mailbox-destination监听接受消息
-    @JmsListener(destination = "mailbox-destination",
-    				containerFactory = "wiselyJmsContainerFactory")
+    @JmsListener(destination = "mailbox-destination")
     public void receiveMessage(String message){
         System.out.println("接受到: <" + message + ">");
     }
@@ -78,13 +81,6 @@ import javax.jms.Session;
 @SpringBootApplication
 public class JmsApplication {
 
-    @Bean
-    JmsListenerContainerFactory<?> wiselyJmsContainerFactory(ConnectionFactory connectionFactory) {
-        SimpleJmsListenerContainerFactory factory = 
-             	                        new SimpleJmsListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        return factory;
-    }
 
     public static void main(String[] args) {
         // 启动程序
@@ -111,4 +107,76 @@ public class JmsApplication {
 ![](resources/7-1.jpg)
 
 ### 7.2.2 AMQP
-### 7.2.1 redis
+- 因为rabbitmq是使用erlang语言开放,先安装[erlang](http://www.erlang.org/download.html)
+
+- 下载安装[rabbitmq](https://www.rabbitmq.com/download.html)
+
+- 启动rabbitmq
+
+- spring boot为我们的自动配置
+  - 默认rabbit server的host为`localhost`
+  - 默认端口号为`5672`
+  - 实际情况请查看`spring boot reference`以`spring.rabbitmq`打头的配置
+  - 自动配置了`RabbitTemplate`的bean
+  - 自动配置了`ConnectionFactory`的bean
+  - 无需添加`@EnableRabbit`
+  - 上面JMS的例子也是一样的
+
+- 新建spring boot(选中IO中的AMQP)
+
+- 新建`Receiver`
+
+```java
+package com.wisely.amqp;
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Receiver {
+    //监听队列wisely-queue
+    @RabbitListener(queues = "wisely-queue")
+    public void receiveMessage(String message) {
+        System.out.println("Received <" + message + ">");
+    }
+
+}
+```
+
+- 在入口类中发送信息
+
+```java
+package com.wisely.amqp;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class AmqpApplication {
+
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(AmqpApplication.class, args);
+        RabbitTemplate rabbitTemplate = context.getBean(RabbitTemplate.class);
+        System.out.println("开始发送消息");
+        //向队列wisely-queue发送消息
+        rabbitTemplate.convertAndSend("wisely-queue", "来自RabbitMQ的问候");
+    }
+
+    //声明一个队列wisely-queue
+    @Bean
+    public Queue wiselyQueue(){
+        return new Queue("wisely-queue");
+    }
+
+
+}
+
+```
+
+- 运行结果
+
+
