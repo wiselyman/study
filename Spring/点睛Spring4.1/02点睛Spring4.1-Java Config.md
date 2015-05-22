@@ -1,10 +1,10 @@
-## 1.1 java config
+## 2.1 java config
 
 - spring的java config主要使用**@Configuration**和**@Bean**两个注解;
  - 使用**@Configuration**注解在类上声明是一个配置类(相当于一个spring的配置xml);
  - 使用**@Bean**注解在方法上,返回值是一个类的实例,并声明这个返回值是spring的一个bean,bean的name是方法名;
 
-## 1.2 关于@Bean和@Component,@Service,@Repository,@Controller
+## 2.2 关于@Bean和@Component,@Service,@Repository,@Controller
 
 - `@Component,@Service,@Repository,@Controller`注解在一个类上之后,这个类也成为spring容器中的bean,使用@Bean注解也是,感觉使用@Bean注解是不是更麻烦呢?
 
@@ -15,15 +15,15 @@
 - 在后面我们讲到一些全局配置的时候我们就会使用Spring的java config
 
 
-## 1.3 演示
+## 2.3 演示
 
-### 1.3.1 创建一个properties(test.properties)文件作为配置
+### 2.3.1 创建一个properties(test.properties)文件作为配置
 
 ```java
 wisely.word = World
 ```
 
-### 1.3.2 创建一个java class
+### 2.3.2 创建一个java class
 ```java
 package com.wisely.javaconfig;
 
@@ -47,7 +47,7 @@ public class DemoService {
 
 ```
 
-### 1.3.3 创建java config配置类
+### 2.3.3 创建java config配置类
 ```java
 package com.wisely.javaconfig;
 
@@ -70,7 +70,7 @@ public class DemoConfig {
 
 
 ```
-### 1.3.4 测试-初始化spring容器
+### 2.3.4 测试-初始化spring容器
 
 ```java
 package com.wisely.javaconfig;
