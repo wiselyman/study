@@ -111,7 +111,8 @@ public class TestController {
 	}
 
 	//获得对象
-	@RequestMapping(value = "/pass",produces = "text/plain;charset=UTF-8")//映射路径http://.../test/pass?id=123&name=wyf
+	@RequestMapping(value = "/pass",produces = "text/plain;charset=UTF-8")
+    //映射路径http://.../test/pass?id=123&name=wyf
 	@ResponseBody
 	public String passObj(DemoObj obj,HttpServletRequest request){
 		System.out.println("对象的id和名称分别为为："+obj.getId()+"/"+obj.getName());
