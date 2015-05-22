@@ -59,10 +59,11 @@ pom.xml中最关键的是`<dependency>`,一个依赖是由三部分组成groupId
 ### 0.2.7 构建特殊的maven依赖包
 
 像oracle的jdbc驱动,互联网上的共有maven服务器上市不能下载的，如果我们要使用的oracle的驱动的话需要自己手动构建.
-在cmd下输入:
+在cmd下输入下面一行代码:
 
 ```java
-mvn install:install-file -DgroupId=com.oracle "-DartifactId=ojdbc14" "-Dversion=10.2.0.2.0" "-Dpackaging=jar" "-Dfile=D:\ojdbc14.jar"
+mvn install:install-file -DgroupId=com.oracle "-DartifactId=ojdbc14"
+"-Dversion=10.2.0.2.0" "-Dpackaging=jar" "-Dfile=D:\ojdbc14.jar"
 ```
 
 此时在pom.xml用如下引入:
