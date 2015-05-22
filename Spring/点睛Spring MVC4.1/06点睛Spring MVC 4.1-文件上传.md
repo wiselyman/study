@@ -45,7 +45,8 @@ public class UploadController {
 	public @ResponseBody String upload(@RequestParam("file") MultipartFile file) {
 
 			try {
-				FileUtils.writeByteArrayToFile(new File("e:/"+file.getOriginalFilename()), file.getBytes());
+	FileUtils.writeByteArrayToFile(new File("e:/"+file.getOriginalFilename()),
+                                                               file.getBytes());
 				return "ok";
 			} catch (IOException e) {
 				e.printStackTrace();
