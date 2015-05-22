@@ -11,7 +11,7 @@
 ## 3.2 演示
 
 ### 3.2.1 新建scope为singleton的类
-```
+```java
 package com.wisely.scope;
 
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class DemoSingletonService {
 ```
 
 ### 3.2.2 新建scope为prototype的类
-```
+```java
 package com.wisely.scope;
 
 import org.springframework.context.annotation.Scope;
@@ -39,7 +39,7 @@ public class DemoPrototypeService {
 ```
 
 ### 3.2.3 测试
-```
+```java
 package com.wisely.scope;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -65,7 +65,7 @@ public class Main {
 ```
 
 输出
-```
+```java
 s1与s2是否相等：true
 p1与p2是否相等：false
 ```

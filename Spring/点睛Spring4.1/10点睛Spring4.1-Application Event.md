@@ -9,7 +9,7 @@
 示例中的通讯两个bean分别为DemoListener和Main
 
 ### 10.2.1 编写自定义的ApplicationContext
-```
+```java
 package com.wisely.event;
 
 import org.springframework.context.ApplicationEvent;
@@ -35,7 +35,7 @@ public class DemoEvent extends ApplicationEvent{
 
 ```
 ### 10.2.2 编写实现ApplicationListener的类
-```
+```java
 package com.wisely.event;
 
 import org.springframework.context.ApplicationListener;
@@ -54,7 +54,7 @@ public class DemoListener implements ApplicationListener<DemoEvent> {
 
 ```
 ### 10.2.3 测试
-```
+```java
 package com.wisely.event;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -77,7 +77,9 @@ public class Main {
 }
 
 ```
+
 输出结果
-```
+
+```java
 我监听到了pulisher发布的message为:22
 ```

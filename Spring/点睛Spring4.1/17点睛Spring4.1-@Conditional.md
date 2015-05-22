@@ -14,7 +14,7 @@
 条件的构造需要类实现**Condition**接口,并实现**matches**方法
 - WindowsCondition
 
-```
+```java
 package com.wisely.conditional;
 
 import org.springframework.context.annotation.Condition;
@@ -33,7 +33,7 @@ public class WindowsCondition implements Condition {
 ```
 - LinuxCondition
 
-```
+```java
 package com.wisely.conditional;
 
 import org.springframework.context.annotation.Condition;
@@ -55,7 +55,7 @@ public class LinuxCondition implements Condition {
 
 - 接口
 
-```
+```java
 package com.wisely.conditional;
 
 
@@ -68,7 +68,7 @@ public interface CommandService {
 
 - WindowsCommnadService
 
-```
+```java
 package com.wisely.conditional;
 
 public class WindowsCommnadService implements CommandService {
@@ -83,7 +83,7 @@ public class WindowsCommnadService implements CommandService {
 
 - LinuxCommandService
 
-```
+```java
 package com.wisely.conditional;
 
 public class LinuxCommandService implements CommandService {
@@ -98,7 +98,7 @@ public class LinuxCommandService implements CommandService {
 
 ### 17.2.3 编写配置类
 
-```
+```java
 package com.wisely.conditional;
 
 import org.springframework.context.annotation.Bean;
@@ -127,7 +127,7 @@ public class DemoConfig {
 
 - windows下
 
-```
+```java
 package com.wisely.conditional;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -147,13 +147,13 @@ public class Main {
 
 输出结果
 
-```
+```java
 dir
 ```
 
 - Linux下(本例没有切换到linux,直接修改os.name为Linux)
 
-```
+```java
 package com.wisely.conditional;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -173,6 +173,6 @@ public class Main {
 ```
 
 输出结果
-```
+```java
 ls
 ```

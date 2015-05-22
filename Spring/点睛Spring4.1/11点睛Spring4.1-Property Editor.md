@@ -7,7 +7,7 @@
 
 ### 11.2.1 使用Spring内置的Editor
 #### 11.2.1.1 编写演示bean
-```
+```java
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ public class DemoBean {
 
 ```
 #### 11.2.1.2 编写配置
-```
+```java
 package com.wisely.propertyeditor;
 
 import java.text.SimpleDateFormat;
@@ -50,7 +50,7 @@ public class DemoConfig {
 
 ```
 #### 11.2.1.3 测试
-```
+```java
 package com.wisely.propertyeditor;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -67,7 +67,7 @@ public class Main {
 
 ```
 输出结果
-```
+```java
 Mon Feb 03 00:00:00 CST 2014
 ```
 
@@ -75,7 +75,7 @@ Mon Feb 03 00:00:00 CST 2014
 
 #### 11.2.2.1 编写需要和字符转换的javabean
 此为传值对象,不需要声明称spring的bean
-```
+```java
 package com.wisely.propertyeditor;
 
 public class DemoBean2 {
@@ -99,7 +99,7 @@ public class DemoBean2 {
 ```
 
 #### 11.2.2.2 在DemoBean中注入该bean
-```
+```java
 package com.wisely.propertyeditor;
 
 import java.util.Date;
@@ -126,7 +126,7 @@ public class DemoBean {
 ```
 
 #### 11.2.2.3 实现自定义的Property Editor
-```
+```java
 package com.wisely.propertyeditor;
 
 import java.beans.PropertyEditorSupport;
@@ -158,7 +158,7 @@ public class DemoPropertyEditor extends PropertyEditorSupport{
 ```
 
 #### 11.2.2.4 配置editorConfigurer
-```
+```java
 package com.wisely.propertyeditor;
 
 import java.beans.PropertyEditor;
@@ -186,7 +186,7 @@ public class Demo2Config {
 ```
 
 #### 11.2.2.5 测试
-```
+```java
 package com.wisely.propertyeditor;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -204,7 +204,7 @@ public class Main {
 
 ```
 输出结果
-```
+```java
 汪云飞///合肥
 ```
 

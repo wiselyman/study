@@ -19,12 +19,12 @@
 
 ### 1.3.1 创建一个properties(test.properties)文件作为配置
 
-```
+```java
 wisely.word = World
 ```
 
 ### 1.3.2 创建一个java class
-```
+```java
 package com.wisely.javaconfig;
 
 public class DemoService {
@@ -48,7 +48,7 @@ public class DemoService {
 ```
 
 ### 1.3.3 创建java config配置类
-```
+```java
 package com.wisely.javaconfig;
 
 import org.springframework.context.annotation.Bean;
@@ -72,7 +72,7 @@ public class DemoConfig {
 ```
 ### 1.3.4 测试-初始化spring容器
 
-```
+```java
 package com.wisely.javaconfig;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

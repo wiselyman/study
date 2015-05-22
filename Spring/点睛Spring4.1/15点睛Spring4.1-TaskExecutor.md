@@ -6,7 +6,7 @@
 
 ## 15.2 示例
 ### 15.2.1 声明taskExecutor
-```
+```java
 package com.wisely.task.executor;
 
 import java.util.concurrent.Executor;
@@ -39,7 +39,7 @@ public class DemoConfig implements AsyncConfigurer{
 ```
 
 ### 15.2.2 异步任务实现代码
-```
+```java
 package com.wisely.task.executor;
 
 import org.springframework.scheduling.annotation.Async;
@@ -61,7 +61,7 @@ public class DemoAsyncTask {
 ```
 
 ### 15.2.3 测试
-```
+```java
 package com.wisely.task.executor;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -87,7 +87,7 @@ public class Main {
 ```
 
 输出结果(结果是并发执行而不是顺序执行的):
-```
+```java
 执行异步任务+1:10
 执行异步任务:6
 执行异步任务:4

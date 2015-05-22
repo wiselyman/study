@@ -37,7 +37,7 @@
 
 ### 0.2.5 关于maven的pom.xml
 pom.xml中最关键的是`<dependency>`,一个依赖是由三部分组成groupId,artifactId,version组成,如:
-```
+```xml
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-entitymanager</artifactId>
@@ -61,10 +61,12 @@ pom.xml中最关键的是`<dependency>`,一个依赖是由三部分组成groupId
 像oracle的jdbc驱动,互联网上的共有maven服务器上市不能下载的，如果我们要使用的oracle的驱动的话需要自己手动构建.
 在cmd下输入:
 
-`mvn install:install-file -DgroupId=com.oracle "-DartifactId=ojdbc14" "-Dversion=10.2.0.2.0" "-Dpackaging=jar" "-Dfile=D:\ojdbc14.jar"`
+```java
+mvn install:install-file -DgroupId=com.oracle "-DartifactId=ojdbc14" "-Dversion=10.2.0.2.0" "-Dpackaging=jar" "-Dfile=D:\ojdbc14.jar"
+```
 
 此时在pom.xml用如下引入:
-```
+```xml
 <dependency>
     <groupId>com.oracle</groupId>
     <artifactId>ojdbc14</artifactId>

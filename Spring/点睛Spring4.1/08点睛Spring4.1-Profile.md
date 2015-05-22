@@ -6,7 +6,7 @@
 ## 8.2 示例
 
 ### 8.2.1 新建测试bean
-```
+```java
 package com.wisely.profile;
 
 
@@ -32,7 +32,7 @@ public class DemoBean {
 
 ```
 ### 8.2.2 编写配置文件
-```
+```java
 package com.wisely.profile;
 
 import org.springframework.context.annotation.Bean;
@@ -59,7 +59,7 @@ public class DemoConfig {
 ```
 ### 8.2.3 测试
 #### 8.2.3.1 使用Environment选择配置
-```
+```java
 package com.wisely.profile;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -84,7 +84,7 @@ public class Main {
 地址为：http://www.baidu.com
 ```
 #### 8.2.3.2 使用JVM参数选择配置
-```
+```java
 package com.wisely.profile;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -110,7 +110,8 @@ public class Main {
 ```
 #### 8.2.3.2 在web项目中的配置
 - web.xml(servlet 2.5及以下)
-```
+
+```xml
 <servlet>
     <servlet-name>dispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -122,7 +123,7 @@ public class Main {
 ```
 - java config(servlet 3.0及以上)
 
-```
+```java
 public class WebInit implements WebApplicationInitializer {
 
     @Override

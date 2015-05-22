@@ -12,7 +12,7 @@
 
 ### 9.2.1 增加aspectj依赖到maven
 
-```
+```xml
 <dependency>
     <groupId>org.aspectj</groupId>
     <artifactId>aspectjrt</artifactId>
@@ -28,7 +28,7 @@
 
 ### 9.2.2 编写拦截规则的注解
 
-```
+```java
 package com.wisely.aop;
 
 import java.lang.annotation.Documented;
@@ -50,7 +50,7 @@ public @interface Action {
 
 - 使用注解
 
-```
+```java
 package com.wisely.aop;
 
 import org.springframework.stereotype.Service;
@@ -72,7 +72,7 @@ public class Demo1Service {
 
 - 使用方法规则
 
-```
+```java
 package com.wisely.aop;
 
 import org.springframework.stereotype.Service;
@@ -89,7 +89,7 @@ public class Demo2Service {
 
 ### 9.2.4 编写切面
 
-```
+```java
 package com.wisely.aop;
 
 import java.lang.reflect.Method;
@@ -127,7 +127,7 @@ public class LogAspect {
 
 ### 9.2.5 测试
 
-```
+```java
 package com.wisely.aop;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -161,7 +161,7 @@ public class Main {
 
 输出结果
 
-```
+```java
 demo1,add操作
 demo1,remove操作
 demo1,update操作

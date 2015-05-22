@@ -10,7 +10,7 @@
 ## 14.2 示例
 
 ### 14.2.1 增加groovy语言支持包到maven
-```
+```xml
 <dependency>
     <groupId>org.codehaus.groovy</groupId>
     <artifactId>groovy-all</artifactId>
@@ -18,7 +18,7 @@
 </dependency>
 ```
 ### 14.2.2 演示接口
-```
+```java
 package com.wisely.script;
 
 public interface DemoService {
@@ -28,7 +28,7 @@ public interface DemoService {
 ```
 
 ### 14.2.3 使用groovy作为接口实现
-```
+```java
 import com.wisely.script.DemoService
 class DemoServiceImpl implements DemoService{
 	def msg
@@ -43,7 +43,7 @@ class DemoServiceImpl implements DemoService{
 - refresh-check-delay指定刷新时间
 - lang:property可注入值到groovy bean,包含普通值或者spring的bean
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -62,7 +62,7 @@ class DemoServiceImpl implements DemoService{
 
 ### 14.2.5 测试
 
-```
+```java
 package com.wisely.script;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -90,7 +90,7 @@ public class Main {
 
 输出结果:
 
-```
+```java
 hello 1234 ok
 hello 1234 not ok
 

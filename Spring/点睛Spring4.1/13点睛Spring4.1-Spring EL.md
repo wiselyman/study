@@ -11,7 +11,7 @@
 
 ## 13.2 示例
 ### 13.2.1 编写Spring EL演示类
-```
+```java
 @Configuration
 @PropertySource("classpath:com/wisely/springel/test.properties")
 public class DemoService {
@@ -47,7 +47,7 @@ public class DemoService {
 ```
 
 ### 13.2.2 编写java类测试注入其他bean的属性
-```
+```java
 package com.wisely.springel;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -70,16 +70,16 @@ public class DemoBean {
 ```
 
 ### 13.2.3 新建测试txt和properties
-```
+```java
 1234
 ```
 
-```
+```java
 wisely.name = wyf
 ```
 
 ### 13.2.3 测试
-```
+```java
 package com.wisely.springel;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -104,8 +104,10 @@ public class Main {
 }
 
 ```
+
 输出结果:
-```
+
+```java
 注入操作系统属性：{java.runtime.name=Java(TM) SE Runtime Environment......}
 注入操作系统名称: Windows 8.1
 注入随机数: 15.342237263367908

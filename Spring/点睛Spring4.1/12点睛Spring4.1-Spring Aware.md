@@ -10,7 +10,7 @@
 
 ## 12.2 示例
 ### 12.2.1 新建演示bean
-```
+```java
 package com.wisely.aware;
 
 import org.springframework.beans.factory.BeanNameAware;
@@ -47,12 +47,12 @@ public class DemoBean implements BeanNameAware,ResourceLoaderAware{
 
 ```
 ### 12.2.2 新建演示用文件info.txt
-```
+```java
 jhkljhlkjhlkj
 111111111111
 ```
 ### 12.2.3 测试
-```
+```java
 package com.wisely.aware;
 
 import java.io.IOException;
@@ -78,8 +78,10 @@ public class Main {
 }
 
 ```
+
 输出结果
-```
+
+```java
 demoBean
 jhkljhlkjhlkj
 111111111111

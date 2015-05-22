@@ -5,19 +5,19 @@
 ## 5.2 示例
 
 ### 5.2.1 新建英文messagesmessages_en_US.properties
-```
+```java
 wisely.name = wyf
 wisely.age = 32
 ```
 
 ### 5.2.2 新建中文messagesmessages_zh_CN.properties
-```
+```java
 wisely.name = \u6C6A\u4E91\u98DE
 wisely.age = 3-10-2
 ```
 
 ### 5.2.3 配置ReloadableResourceBundleMessageSource
-```
+```java
 package com.wisely.i18n;
 
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ public class I18NConfig {
 ```
 
 ### 5.2.4 测试
-```
+```java
 package com.wisely.i18n;
 
 import java.util.Locale;
@@ -77,7 +77,7 @@ public class Main {
 
 ```
 输出结果
-```
+```java
 nameEN=wyf
 nameCN=汪云飞
 nameEN=32

@@ -6,7 +6,7 @@
 ## 7.2 示例
 ### 7.2.1 处理全部bean
 #### 7.2.1.1 新建两个测试用的bean
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class DemoNormal1Service {
 
 ```
 
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class DemoNormal2Service {
 ```
 
 #### 7.2.1.2 编写处理所有bean的BeanPostProcessor
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.beans.BeansException;
@@ -57,7 +57,7 @@ public class DemoAllBeanPostProcessor implements BeanPostProcessor{
 
 ```
 #### 7.2.1.3 测试
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -73,7 +73,7 @@ public class Main {
 }
 ```
 输出结果为:
-```
+```java
 在 DemoAllBeanPostProcessor的postProcessBeforeInitialization方法里处理bean:
 demoNormal1Service bean的类型为:class com.wisely.beanpostprocessor.DemoNormal1Service
 在 DemoAllBeanPostProcessor的postProcessAfterInitialization方法里处理bean:
@@ -89,7 +89,8 @@ demoNormal2Service bean的类型为:class com.wisely.beanpostprocessor.DemoNorma
 
 #### 7.2.2.2 新建指定处理的bean
 已经给os和num属性赋值,将在BeanPostProcessor的实现类对类的属性进行修改
-```
+
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -123,7 +124,7 @@ public class DemoSelectedService {
 ```
 
 #### 7.2.2.3 编写指定bean的BeanPostProcessor
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.beans.BeansException;
@@ -156,7 +157,7 @@ public class DemoSelectedBeanPostProcessor implements BeanPostProcessor {
 
 ```
 #### 7.2.2.4 测试
-```
+```java
 package com.wisely.beanpostprocessor;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -177,8 +178,10 @@ public class Main {
 
 
 ```
+
 输出结果
-```
+
+```java
 在DemoSelectedBeanPostProcessor的postProcessBeforeInitialization中将os从windows修改成了Linux
 在DemoSelectedBeanPostProcessor的postProcessBeforeInitialization中将num从123修改成了456
 os确实被修改成了Linux

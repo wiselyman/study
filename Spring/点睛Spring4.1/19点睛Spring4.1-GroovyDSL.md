@@ -10,7 +10,7 @@
 
 ### 19.2.1 演示类
 
-```
+```java
 package com.wisely.dsl;
 
 public class DemoService {
@@ -37,7 +37,7 @@ public class DemoService {
 - DemoConfig.groovy
 
 
-```
+```java
 import com.wisely.dsl.DemoService //import要注册为bean的类
 //所有的bean的声明放在beans下
 beans{
@@ -51,7 +51,7 @@ beans{
 
 ### 19.2.3 测试
 
-```
+```java
 package com.wisely.dsl;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -75,6 +75,7 @@ public class Main {
 ```
 
 输出结果
-```
+
+```java
 Hello World
 ```

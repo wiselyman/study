@@ -10,7 +10,7 @@
 
 ### 16.2.1 计划任务的配置
 
-```
+```java
 @Configuration
 @EnableScheduling
 public class DemoConfig {
@@ -21,7 +21,7 @@ public class DemoConfig {
 
 ### 16.2.2 计划配置任务类
 
-```
+```java
 package com.wisely.task.scheduler;
 
 import java.text.SimpleDateFormat;
@@ -53,7 +53,7 @@ public class DemoScheduledTask {
 
 ### 16.2.3 测试
 
-```
+```java
 package com.wisely.task.scheduler;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -72,7 +72,7 @@ public class Main {
 ```
 输出结果
 
-```
+```java
 每隔五秒执行一次 11:21:42
 每隔五秒执行一次 11:21:47
 每隔五秒执行一次 11:21:52

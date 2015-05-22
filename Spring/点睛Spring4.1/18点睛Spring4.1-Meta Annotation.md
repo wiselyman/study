@@ -6,7 +6,8 @@
 ## 18.2 示例
 ### 18.2.1 spring注解分析
 我们看看spring的@Service的源码:可看出@Service注解是由几个注解组合的包含**@Component**;
-```
+
+```java
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -23,7 +24,7 @@ public @interface Service {
 #### 18.2.2.1 新建元注解
 组合@Configuration,@PropertySource注解为一个注解@WiselyMetaAnnotation
 
-```
+```java
 package com.wisely.meta;
 
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +39,8 @@ public @interface WiselyMetaAnnotation {
 ```
 #### 18.2.2.2 去除已有配置
 去除DemoConfig上的配置,使用新定义的组合元注解
-```
+
+```java
 package com.wisely.meta;
 
 import org.springframework.context.annotation.Bean;
@@ -60,7 +62,7 @@ public class DemoConfig {
 ```
 
 #### 18.2.2.3 测试
-```
+```java
 package com.wisely.meta;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -80,8 +82,10 @@ public class Main {
 ```
 
 输出结果
-```
+
+```java
 Hello World
 ```
+
 与<<02点睛Spring4.1-Java Config>>结果保持一致
 

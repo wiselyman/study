@@ -6,7 +6,7 @@
 ## 6.2 示例
 ### 6.2.1 @Bean形式的Initialization和Destruction
 #### 6.2.1.1 新建服务java类
-```
+```java
 package com.wisely.prepost;
 
 public class BeanWayService {
@@ -25,7 +25,7 @@ public class BeanWayService {
 
 ```
 #### 6.2.1.2 新建配置java类
-```
+```java
 package com.wisely.prepost;
 
 import org.springframework.context.annotation.Bean;
@@ -41,7 +41,7 @@ public class BeanWayConfig {
 ```
 
 #### 测试
-```
+```java
 package com.wisely.prepost;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -58,7 +58,7 @@ public class Main {
 }
 ```
 输出结果
-```
+```java
 初始化构造函数-bean
 init-method-bean
 destory-method-bean
@@ -67,7 +67,7 @@ destory-method-bean
 ### 6.2.2 JSR-250形式的Initialization和Destruction
 #### 6.2.2.1 添加jsr250-api到maven依赖
 添加如下到pom.xml
-```
+```xml
 <dependency>
     <groupId>javax.annotation</groupId>
     <artifactId>jsr250-api</artifactId>
@@ -75,7 +75,7 @@ destory-method-bean
 </dependency>
 ```
 #### 6.2.2.2 添加jsr250形式的服务类
-```
+```java
 package com.wisely.prepost;
 
 import javax.annotation.PostConstruct;
@@ -101,7 +101,7 @@ public class JSR250WayService {
 
 ```
 #### 6.2.2.3 测试
-```
+```java
 package com.wisely.prepost;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -117,8 +117,10 @@ public class Main {
 }
 
 ```
+
 输出结果
-```
+
+```java
 初始化构造函数-annotation
 init-method-annotation
 destory-method-annotation

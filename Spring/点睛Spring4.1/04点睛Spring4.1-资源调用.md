@@ -9,7 +9,7 @@
 ### 4.2.1 新增commons-io到maven依赖
 需使用commons-io的IOUtils工具类将InputStream转换成String
 在pom.xml的<dependencies>中添加如下
-```
+```xml
 <dependency>
     <groupId>commons-io</groupId>
     <artifactId>commons-io</artifactId>
@@ -19,7 +19,7 @@
 ```
 
 ### 4.2.2 新建测试用info.txt
-```
+```java
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad
@@ -27,7 +27,7 @@ sadfasdfasdfasdfasdfsad
 
 ### 4.2.3 测试
 
-```
+```java
 package com.wisely.resource;
 
 import java.io.IOException;
@@ -71,7 +71,8 @@ public class Main {
 ```
 
 输出结果
-```
+
+```java
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad
 sadfasdfasdfasdfasdfsad

@@ -19,7 +19,7 @@
 ## 1.3 示例
 
 ### 1.3.1 新建待注入的java类
-```
+```java
 package com.wisely.di;
 
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class Demo1Service {
 ```
 
 ### 1.3.2 新建被注入的java类
-```
+```java
 package com.wisely.di;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ public class Demo2Service {
 ```
 
 ### 1.3.3 测试
-```
+```java
 package com.wisely.di;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
