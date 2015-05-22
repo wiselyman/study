@@ -19,7 +19,7 @@
 
 - 新增jms及activemq的依赖
 
-```
+```xml
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jms</artifactId>
@@ -32,7 +32,7 @@
 
 - 编写接受消息方法
 
-```
+```java
 package demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ public class Receiver {
 
 - 在入口类中发送信息
 
-```
+```java
 package demo;
 
 import org.springframework.boot.SpringApplication;
