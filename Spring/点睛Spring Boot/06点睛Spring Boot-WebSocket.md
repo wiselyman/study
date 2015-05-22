@@ -16,10 +16,6 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-websocket</artifactId>
 </dependency>
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-messaging</artifactId>
-</dependency>
 ```
 
 - 添加页面端的脚本支持
@@ -208,3 +204,180 @@ public class WsController {
  ![](resources/6-5.jpg)
 
  ![](resources/6-6.jpg)
+
+
+### 6.2.2 websocket指定用户式
+
+- 上例既不知道发送消息的人是谁,也不能将信息发送给指定用户
+
+- 演示需添加需添加**Spring Security**支持
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+- **Spring Security**配置
+
+```
+package com.wisely.demoboot.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+
+@Configuration
+@EnableWebMvcSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/","/login").permitAll()//根路径和/login路径不拦截
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login") //登陆页面
+                .defaultSuccessUrl("/chat") //登陆成功转向该页面
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
+    }
+
+    //在内存中注册两个用户
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("wyf").password("wyf").roles("USER")
+                .and()
+                .withUser("phy").password("phy").roles("USER");
+    }
+    //忽略静态资源的拦截
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/static/**");
+    }
+
+}
+
+```
+
+- 在`WiselyMvcConfig`的`addViewControllers`添加本例所需的映射
+
+```
+registry.addViewController("/login").setViewName("login");
+registry.addViewController("/chat").setViewName("chat");
+```
+
+- 演示控制器`WsController`添加
+
+```
+  //消息发送模板
+    @Autowired
+    private  SimpMessagingTemplate  messagingTemplate;
+     @MessageMapping("/chat")
+    public void handleChat(Principal principal, String msg) {
+        //从principal取出消息发送用户
+        if(principal.getName().equals("phy")){
+            //向指定用户wyf发送消息
+            messagingTemplate.convertAndSendToUser("wyf", "/queue/notifications", 														principal.getName()+"-send:"+msg);
+        }
+        else{
+            //向指定用户phy发送消息
+            messagingTemplate.convertAndSendToUser("phy", "/queue/notifications",                                    						principal.getName()+"-send:"+msg);
+        }
+```
+
+- 登陆页面
+
+```
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<meta charset="UTF-8" />
+<head>
+    <title>登陆页面</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    无效的账号和密码
+</div>
+<div th:if="${param.logout}">
+    你已注销
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> 账号 : <input type="text" name="username"/> </label></div>
+    <div><label> 密码: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="登陆"/></div>
+</form>
+</body>
+</html>
+```
+
+- 演示页面
+
+```
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<head>
+    <title>Home</title>
+    <script src="sockjs.min.js"></script>
+    <script src="stomp.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<p>
+    聊天室
+</p>
+
+<form id="wiselyForm">
+    <textarea rows="4" cols="60" name="text"></textarea>
+    <input type="submit"/>
+</form>
+
+<script th:inline="javascript">
+    $('#wiselyForm').submit(function(e){
+        e.preventDefault();
+        var text = $('#wiselyForm').find('textarea[name="text"]').val();
+        sendSpittle(text);
+    });
+
+    var sock = new SockJS("/endpointChat");
+    var stomp = Stomp.over(sock);
+    stomp.connect('guest', 'guest', function(frame) {
+        stomp.subscribe("/user/queue/notifications", handleNotification);
+    });
+
+
+
+    function handleNotification(message) {
+        $('#output').append("<b>Received: " + message.body + "</b><br/>")
+    }
+
+    function sendSpittle(text) {
+        stomp.send("/app/chat", {}, text);
+    }
+    $('#stop').click(function() {sock.close()});
+</script>
+
+<div id="output"></div>
+</body>
+</html>
+```
+
+- 运行演示
+
+- chrome浏览器启动2个用户,这样每个chrome页面都可以有独立的session(在设置里添加用户)
+
+![](resources/6-7.jpg)
+![](resources/6-8.jpg)
+![](resources/6-9.jpg)
+![](resources/6-10.jpg)
