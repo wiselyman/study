@@ -136,7 +136,8 @@ public class DemoPropertyEditor extends PropertyEditorSupport{
 	@Override
 	public String getAsText() {
 		DemoBean2 bean2 =(DemoBean2) getValue();
-		return bean2.getClass().getName() + "," + bean2.getName() + "," + bean2.getAddress();
+		return bean2.getClass().getName() + "," + bean2.getName() 
+                                     + "," + bean2.getAddress();
 	}
 
 	@Override
