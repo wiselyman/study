@@ -105,7 +105,8 @@ public class WiselyMessageConverter extends AbstractHttpMessageConverter<Person>
     }
     //从request里获得构造Person实例的数据
     @Override
-    protected Person readInternal(Class<? extends Person> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
+    protected Person readInternal(Class<? extends Person> clazz,
+     HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
         String temp = StreamUtils.copyToString(inputMessage.getBody(), Charset.forName("UTF-8"));
         String[] tempArr = temp.split("-");
         return new Person(tempArr[0],tempArr[1]);
@@ -119,7 +120,8 @@ public class WiselyMessageConverter extends AbstractHttpMessageConverter<Person>
 
     //将person实例转换成你想要的字符串格式
     @Override
-    protected void writeInternal(Person person, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
+    protected void writeInternal(Person person, HttpOutputMessage outputMessage) 
+                                 throws IOException, HttpMessageNotWritableException {
         String out = "hello:" +person.getFirstName() + "-" + person.getLastName();
         outputMessage.getBody().write(out.getBytes());
     }
