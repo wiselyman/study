@@ -8,11 +8,13 @@
 - 默认情况下,spring boot默认使用logback作为日志实现
 
 - 配置log文件(在application.properties内)
- ```
+
+ ```java
 logging.file=D:/mylog/log.log
  ```
 - 日志级别(在application.properties内)
-```
+
+```java
 logging.level.org.springframework.web: DEBUG
 ```
 
@@ -24,7 +26,7 @@ logging.level.org.springframework.web: DEBUG
 
 - application.properties  
 
-```
+```java
 logging.file=D:/mylog/log.log
 logging.level.org.springframework.web: DEBUG
 ```

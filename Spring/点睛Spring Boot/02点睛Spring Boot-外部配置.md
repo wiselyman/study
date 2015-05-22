@@ -16,7 +16,7 @@
 
   `properties`方式:  
 
-  ```
+  ```java
   spring.datasource.driver-class-name=
     spring.datasource.url=
     spring.datasource.username=
@@ -25,7 +25,7 @@
 
   `YAML`方式:  
 
-  ```
+  ```java
   spring: 
       datasource:
           driver-class-name:
@@ -53,13 +53,13 @@
 
 ### 2.2.1 自定义properties配置文件
 - `src/resources/config/author.properties`  
-```
+```java
 author.name=wyf
 author.age=32
 ```
 - 类型安全配置类
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -90,7 +90,7 @@ public class AuthorSettings {
 ### 2.2.2 自定义YAML配置文件
 - `src/resources/config/reader.yml`  
 
-```
+```java
 	reader:
     	name: phy
     	age: 27
@@ -99,7 +99,7 @@ public class AuthorSettings {
 
 - 类型安全配置类
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -131,7 +131,8 @@ public class ReaderSettings {
 ### 2.2.3 开启配置支持
 
 使用**@EnableConfigurationProperties**注解开启
-```
+
+```java
 package com.wisely.demoboot;
 
 import com.wisely.demoboot.config.AuthorSettings;
@@ -155,7 +156,7 @@ public class DemoBootApplication {
 ```
 
 ### 2.2.4 测试
-```
+```java
 package com.wisely.demoboot;
 
 import com.wisely.demoboot.config.AuthorSettings;

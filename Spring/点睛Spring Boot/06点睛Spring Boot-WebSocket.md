@@ -11,7 +11,7 @@
 
 - 添加spring boot开放websocket依赖
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-websocket</artifactId>
@@ -24,7 +24,7 @@
 
 - 发送信息类
 
-```
+```java
 package com.wisely.demoboot.domain;
 
 public class WiselyMessage {
@@ -39,7 +39,7 @@ public class WiselyMessage {
 
 - 返回信息类
 
-```
+```java
 package com.wisely.demoboot.domain;
 
 public class WiselyResponse {
@@ -56,7 +56,7 @@ public class WiselyResponse {
 
 - `websocket`配置文件
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -90,7 +90,7 @@ public class WiselyWebSocketConfig extends AbstractWebSocketMessageBrokerConfigu
 
 - `websocket` 演示控制器
 
-```
+```java
 package com.wisely.demoboot;
 
 import com.wisely.demoboot.domain.WiselyMessage;
@@ -114,7 +114,7 @@ public class WsController {
 
 - 添加演示页面`ws.html`
 
-```
+```javascript
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -187,7 +187,7 @@ public class WsController {
 - 注册该页面的viewController
  - 在`WiselyMvcConfig`的`addViewControllers`添加
 
- ```
+ ```java
  registry.addViewController("/ws").setViewName("ws");
  ```
 
@@ -212,7 +212,7 @@ public class WsController {
 
 - 演示需添加需添加**Spring Security**支持
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>
@@ -220,7 +220,7 @@ public class WsController {
 ```
 - **Spring Security**配置
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -270,14 +270,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 - 在`WiselyMvcConfig`的`addViewControllers`添加本例所需的映射
 
-```
+```java
 registry.addViewController("/login").setViewName("login");
 registry.addViewController("/chat").setViewName("chat");
 ```
 
 - 演示控制器`WsController`添加
 
-```
+```java
   //消息发送模板
     @Autowired
     private  SimpMessagingTemplate  messagingTemplate;
@@ -296,7 +296,7 @@ registry.addViewController("/chat").setViewName("chat");
 
 - 登陆页面
 
-```
+```javascript
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -322,7 +322,7 @@ registry.addViewController("/chat").setViewName("chat");
 
 - 演示页面
 
-```
+```javascript
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">

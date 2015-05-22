@@ -27,7 +27,7 @@
 - 手工构建与上述情况其实是一样的;
 - 只要maven的pom.xml里包含以下,我们的项目就成为了一个spring boot项目
 
-```
+```xml
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -59,7 +59,7 @@
 
 ### 0.2.5 简单演示
 - 在pom.xml里添加对web开发的支持,此处依赖不用加version,因为spring-boot-starter-parent已经对全局的常用jar包的版本做了定义
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
@@ -68,7 +68,7 @@
 
 - 添加一个测试控制器
 
-```
+```java
 package com.wisely.demoboot;
 
 import org.springframework.boot.SpringApplication;

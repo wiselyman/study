@@ -39,7 +39,7 @@
 - 通过`application.properties`
  - **《spring boot reference》Part X. Appendices** `server`打头的配置
  - 如:  
- ```
+ ```java
  server.port=8080
  server.address= # bind to a specific NIC
  server.session-timeout= # session timeout in seconds
@@ -73,7 +73,7 @@
 ### 5.2.1 自定义HttpMessageConverter
 - 演示需页面,添加thymeleaf模板引擎支持
  - 去除`spring-boot-starter-web`依赖,因为`spring-boot-starter-thymeleaf`已包含
-```
+```xml
   <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -83,7 +83,7 @@
 
 - 自定义`HttpMessageConverter`-`WiselyMessageConverter`
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import com.wisely.demoboot.domain.Person;
@@ -132,7 +132,7 @@ public class WiselyMessageConverter extends AbstractHttpMessageConverter<Person>
 - 注册自定义的`WiselyMessageConverter`
  - 新建一个配置类专门覆盖配置mvc的配置
 
-```
+```java
  package com.wisely.demoboot.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -153,7 +153,7 @@ public class WiselyMvcConfig extends WebMvcConfigurerAdapter {
 
 - 演示控制器
 
-```
+```java
 package com.wisely.demoboot;
 
 import com.wisely.demoboot.domain.Person;
@@ -184,7 +184,7 @@ public class TestConverterController {
 - 演示页面
  - `src\main\resources\templates\testConverter.html`
 
-```
+```javascript
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
@@ -224,7 +224,7 @@ public class TestConverterController {
 
 - 自定义拦截器
 
-```
+```java
 package com.wisely.demoboot.interceptors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -259,7 +259,7 @@ public class WiselyInteceptor extends HandlerInterceptorAdapter {
 - 注册此拦截器
  - 在`WiselyMvcConfig`重载`addInterceptors`方法
 
- ```
+ ```java
  @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new WiselyInteceptor());
@@ -285,7 +285,7 @@ public class WiselyInteceptor extends HandlerInterceptorAdapter {
 
 - 注释到上例那段代码
 
-```
+```java
 //    @RequestMapping("/page")
 //    public String toPage(){
 //        return "testConverter";
@@ -294,7 +294,7 @@ public class WiselyInteceptor extends HandlerInterceptorAdapter {
 
 - 在`WiselyMvcConfig`中重载`addViewControllers`
 
-```
+```java
  @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/page").setViewName("testConverter");
@@ -314,7 +314,7 @@ public class WiselyInteceptor extends HandlerInterceptorAdapter {
 
 - 定义`WiselyServletContainer`
 
-```
+```java
 package com.wisely.demoboot.config;
 
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -345,7 +345,8 @@ public class WiselyServletContainer implements EmbeddedServletContainerCustomize
 - 注释上例的@Component(`//@Component`)
 
 - 在`DemoBootApplication`中定义@Bean(只要在注解有@Configutation的类都可)
-```
+
+```java
    @Bean
     public EmbeddedServletContainerFactory wiselyTomcatContainer(){
         TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
@@ -365,7 +366,7 @@ Tomcat started on port(s): 9999 (http)
 - 在任意注解有`@Configuration`的配置类中:
 
 
-```
+```java
    @Bean
     public ServletRegistrationBean servletRegistrationBean(){
         return new ServletRegistrationBean(new XxServlet(),"/xx/*");

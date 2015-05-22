@@ -80,15 +80,16 @@ public class JmsApplication {
 
     @Bean
     JmsListenerContainerFactory<?> wiselyJmsContainerFactory(ConnectionFactory connectionFactory) {
-        SimpleJmsListenerContainerFactory factory =
-        						new SimpleJmsListenerContainerFactory();
+        SimpleJmsListenerContainerFactory factory = 
+             	                        new SimpleJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         return factory;
     }
 
     public static void main(String[] args) {
         // 启动程序
-        ConfigurableApplicationContext context = 															SpringApplication.run(JmsApplication.class, args);
+        ConfigurableApplicationContext context =
+                             SpringApplication.run(JmsApplication.class, args);
         // 发送消息
         MessageCreator messageCreator = new MessageCreator() {
             @Override

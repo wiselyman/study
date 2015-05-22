@@ -50,7 +50,7 @@
 
 ### 1.1.1 入口类`DemoBootApplication`
 
-```
+```java
 package com.wisely.demoboot;
 
 import org.springframework.boot.SpringApplication;
@@ -67,7 +67,8 @@ public class DemoBootApplication {
 ```
 ### 1.1.2 核心配置`@SpringBootApplication`
 - @SpringBootApplication源码
-```
+
+```java
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -90,7 +91,7 @@ public @interface SpringBootApplication {
 ### 1.1.3 关闭特定的自动配置
 - 自动配置是非入侵式的,任何时候你都可以用自己的配置替代自动配置;
 
-```
+```java
 @Configuration
 //关闭数据源自动配置
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
@@ -120,13 +121,13 @@ public class MyConfiguration {
 
 - 关闭banner  
 1.main里的内容修改为  
-```
+```java
 SpringApplication app = new SpringApplication(DemoBootApplication.class, args);
 app.setShowBanner(false);
 app.run(args);
 ```
 2.或使用fluent api修改为  
-```
+```java
  new SpringApplicationBuilder(DemoBootApplication.class)
                 .showBanner(false)
                 .run(args);
