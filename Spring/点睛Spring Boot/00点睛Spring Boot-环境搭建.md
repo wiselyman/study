@@ -86,6 +86,9 @@ public class DemoBootApplication {
 
 - 运行
  - 在`DemoBootApplication`类上
+
  ![](resources/1-9.jpg)
+
  - 访问`http://localhost:8080`
+
   ![](resources/1-10.jpg)
