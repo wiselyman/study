@@ -12,7 +12,8 @@
 
 ### 1.2.2 添加spring mvc依赖到maven
 将`pom.xml`修改如下
-```
+
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -146,7 +147,7 @@
 
 - Spring MVC的配置
 
-```
+```java
 package com.wisely;
 
 import org.springframework.context.annotation.Bean;
@@ -177,7 +178,7 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 ```
 - WebInitializer(相当于web.xml)
 
-```
+```java
 package com.wisely;
 
 import javax.servlet.ServletContext;
@@ -212,7 +213,7 @@ public class WebInitializer implements WebApplicationInitializer {
 
 - HomeController
 
-```
+```java
 package com.wisely.web;
 
 import org.springframework.stereotype.Controller;
@@ -230,7 +231,7 @@ public class HomeController {
 ```
 - `src/main/webapp/WEB-INF/views/index.jsp`
 
-```
+```javascript
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

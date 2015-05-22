@@ -18,7 +18,7 @@
 
 - 传值对象
 
-```
+```java
 package com.wisely.web;
 
 public class DemoObj {
@@ -52,7 +52,7 @@ public class DemoObj {
 ```
 - 控制器 `TestController`
 
-```
+```java
 package com.wisely.web;
 
 import javax.servlet.http.HttpServletRequest;

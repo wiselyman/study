@@ -23,7 +23,7 @@
 从@RestController看出,@RestController是一个元注解,组合了@Controller,@ResponseBody,相当于同时使用了@Controller
 @ResponseBody
 
-```
+```java
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -48,7 +48,7 @@ public @interface RestController {
 
 jackson-dataformat-xml依赖`jackson-bind`,这样我们能同时返回xml和json
 
-```
+```xml
 <dependency>
     <groupId>com.fasterxml.jackson.dataformat</groupId>
     <artifactId>jackson-dataformat-xml</artifactId>
@@ -56,7 +56,7 @@ jackson-dataformat-xml依赖`jackson-bind`,这样我们能同时返回xml和json
 </dependency>
 ```
  若只需返回json数据(大多数项目都是这样),将上面依赖更换为
-```
+```xml
  <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
@@ -66,7 +66,7 @@ jackson-dataformat-xml依赖`jackson-bind`,这样我们能同时返回xml和json
 
 - 传值对象
 
-```
+```java
 package com.wisely.web;
 
 public class DemoObj {
@@ -100,7 +100,7 @@ public class DemoObj {
 
 - 控制器
 
-```
+```java
 package com.wisely.web;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -125,7 +125,7 @@ public class RESTController {
 
 - 页面代码
 
-```
+```javascript
 <script type="text/javascript" src="<c:url value="/js/jquery.js" />"></script>
 <script type="text/javascript">
 var json = {"id":456,"name":"phy"};

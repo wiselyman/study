@@ -7,7 +7,7 @@
 
 - 新建拦截器
 
-```
+```java
 package com.wisely.interceptors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +43,7 @@ public class DemoInteceptor extends HandlerInterceptorAdapter {
 
 - 修改配置,注册拦截器
 
-```
+```java
 package com.wisely;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +89,7 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 
 - 在index.jsp添加代码接受拦截器里放置的handlingTime
 
-```
+```javascript
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

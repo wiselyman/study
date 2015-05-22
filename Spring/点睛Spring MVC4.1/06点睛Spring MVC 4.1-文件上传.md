@@ -8,7 +8,7 @@
 
 - 增加和上传和文件操作的依赖到maven
 
-```
+```xml
 <dependency>
     <groupId>commons-io</groupId>
     <artifactId>commons-io</artifactId>
@@ -23,7 +23,7 @@
 
 - 上传控制器
 
-```
+```java
 package com.wisely.web;
 
 import java.io.File;
@@ -61,7 +61,7 @@ public class UploadController {
 
 - 文件上传所需配置
 
-```
+```java
 @Configuration
 @ComponentScan("com.wisely")
 @EnableWebMvc
@@ -103,7 +103,7 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 ```
 
 - 页面代码
-```
+```javascript
 <form action="upload" enctype="multipart/form-data" method="post">
     <input type="file" name="file"/><br/>
     <input type="submit" value="上传">

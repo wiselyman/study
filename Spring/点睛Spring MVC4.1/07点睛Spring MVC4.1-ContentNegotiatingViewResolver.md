@@ -27,7 +27,7 @@
  - json依赖`03点睛Spring MVC 4.1-REST`已添加
  - xml
 
- ```
+ ```xml
  <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-oxm</artifactId>
@@ -37,7 +37,7 @@
 
  - pdf
 
- ```
+ ```xml
  <dependency>
 	<groupId>com.lowagie</groupId>
 	<artifactId>itext</artifactId>
@@ -47,7 +47,7 @@
  ```
  - xls
 
- ```
+ ```xml
  <dependency>
     <groupId>org.apache.poi</groupId>
     <artifactId>poi</artifactId>
@@ -60,7 +60,7 @@
 
 ##### 7.2.2.1.1 view
 
- ```
+ ```java
  package com.wisely.view;
 
 import java.awt.Color;
@@ -104,7 +104,7 @@ public class PdfView extends AbstractPdfView {
  ```
 
 ##### 7.2.2.1.2 viewResolver
-```
+```java
 package com.wisely.viewresolver;
 
 import java.util.Locale;
@@ -129,7 +129,7 @@ public class PdfViewResolver implements ViewResolver{
 
 #### 7.2.2.2 xls
 ##### 7.2.2.2.1 view
-```
+```java
 package com.wisely.view;
 
 import java.util.Map;
@@ -191,7 +191,7 @@ public class XlsView extends AbstractExcelView{
 
 ```
 ##### 7.2.2.2.2 viewResolver
-```
+```java
 package com.wisely.viewresolver;
 
 import java.util.Locale;
@@ -217,7 +217,7 @@ public class XlsViewResolver implements ViewResolver{
 ##### 7.2.2.3.1 view
 使用的是`MappingJackson2JsonView`
 ##### 7.2.2.3.2 viewResolver
-```
+```java
 package com.wisely.viewresolver;
 
 import java.util.Locale;
@@ -242,7 +242,7 @@ public class JsonViewResolver implements ViewResolver{
 #### 7.2.2.4 xml
 
 ##### 7.2.2.4.1 DemoBean的额外配置
-```
+```java
 package com.wisely.domain;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -288,7 +288,7 @@ public class DemoObj {
 ##### 7.2.2.4.2 view
 使用的是`MarshallingView`
 ##### 7.2.2.4.3 viewResolver
-```
+```java
 package com.wisely.viewresolver;
 
 import java.util.Locale;
@@ -320,7 +320,7 @@ public class XmlViewResolver implements ViewResolver {
 ##### 7.2.2.5.1 view
 `WEB-INF/views/demoObj.jsp`
 
-```
+```javascript
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -341,7 +341,7 @@ public class XmlViewResolver implements ViewResolver {
 `UrlBasedViewResolver`或`InternalResourceViewResolver`
 
 ### 7.2.3 配置resolver
-```
+```java
 package com.wisely;
 
 import java.util.ArrayList;
@@ -464,7 +464,7 @@ public class DemoMVCConfig extends WebMvcConfigurerAdapter {
 
 ```
 ### 7.2.4 演示控制器
-```
+```java
 package com.wisely.web;
 
 import org.springframework.stereotype.Controller;

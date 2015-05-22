@@ -9,7 +9,7 @@
 
 - 服务器推送控制器
 
-```
+```java
 package com.wisely.web;
 
 import java.util.Random;
@@ -37,7 +37,7 @@ public class SSEController {
 
 - 页面代码
 
-```
+```javascript
 <div id="msg_from_server"></div>
 <script type="text/javascript" src="<c:url value="/js/jquery.js" />"></script>
 <script type="text/javascript">
