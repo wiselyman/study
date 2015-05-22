@@ -2,7 +2,13 @@
 - 我们设计的准则是解耦,这就意味着我们不能对Spring的IoC容器有直接的依赖,但是我们还是想我们的bean能识别容器的资源;
 - 使用aware能让我们在应用的任意位置获得spring容器的资源;
 - 我们通过实现**aware**接口来识别spring容器的资源;
-- Spring包含的aware有:**BeanNameAware，BeanFactoryAware,ApplicationContextAware,MessageSourceAware,ApplicationEventPublisherAware,ResourceLoaderAware**
+- Spring包含的aware有:
+ - **BeanNameAware**
+ - **BeanFactoryAware**
+ - **ApplicationContextAware**
+ - **MessageSourceAware**
+ - **ApplicationEventPublisherAware**
+ - **ResourceLoaderAware**
 - 实现**ApplicationContextAware**接口,可识别所有的资源,但最好是你用到什么就使用什么;
 - 这也就意味着我们就耦合到了spring框架上了,没有spring框架你的代码将无法执行;
 
