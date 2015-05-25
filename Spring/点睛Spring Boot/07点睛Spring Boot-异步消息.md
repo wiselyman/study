@@ -179,4 +179,5 @@ public class AmqpApplication {
 
 - 运行结果
 
+![](resources/7-3.jpg)
 
