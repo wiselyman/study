@@ -97,6 +97,15 @@ public class DemoObj {
 
 }
 ```
+- `DemoMVCConfig`注册静态资源
+
+```java
+	// 静态资源映射
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+	}
+```
 
 - 控制器
 
