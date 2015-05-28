@@ -102,7 +102,7 @@ public class ExcelBatchConfig {
 
     @Bean
     public JobRepository jobRepository(DataSource dataSource,
-                                            PlatformTransactionManager transactionManager) throws Exception {
+                                    PlatformTransactionManager transactionManager) throws Exception {
         JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
         jobRepositoryFactoryBean.setDataSource(dataSource);
         jobRepositoryFactoryBean.setTransactionManager(transactionManager);
@@ -112,7 +112,7 @@ public class ExcelBatchConfig {
 
     @Bean
     public SimpleJobLauncher jobLauncher(DataSource dataSource,
-                                            PlatformTransactionManager transactionManager) throws Exception{
+                                    PlatformTransactionManager transactionManager) throws Exception{
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(jobRepository(dataSource,transactionManager));
         return jobLauncher;
