@@ -91,7 +91,8 @@ public class ExcelBatchConfig {
 
     @Bean
     @StepScope
-    public ItemWriter<Player> writer(DataSource dataSource,@Value("#{jobParameters['sql']}") String sql) {
+    public ItemWriter<Player> writer(DataSource dataSource,
+                                          @Value("#{jobParameters['sql']}") String sql) {
         JdbcBatchItemWriter<Player> writer = new JdbcBatchItemWriter<Player>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Player>());
         writer.setSql(sql);
@@ -100,7 +101,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public JobRepository jobRepository(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
+    public JobRepository jobRepository(DataSource dataSource,
+                                            PlatformTransactionManager transactionManager) throws Exception {
         JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
         jobRepositoryFactoryBean.setDataSource(dataSource);
         jobRepositoryFactoryBean.setTransactionManager(transactionManager);
@@ -109,7 +111,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public SimpleJobLauncher jobLauncher(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception{
+    public SimpleJobLauncher jobLauncher(DataSource dataSource,
+                                            PlatformTransactionManager transactionManager) throws Exception{
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(jobRepository(dataSource,transactionManager));
         return jobLauncher;
@@ -291,7 +294,8 @@ public class DemoController {
     public String export(@RequestParam String xls) throws Exception{
         String path = xls+".xls";
         String sql = "insert into batch_player "
-        +"(id,position,firstname, lastname,birthyear,debutyear) "                			    +"values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
+        +"(id,position,firstname, lastname,birthyear,debutyear) "
+        +"values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
 
         jobParameters = new JobParametersBuilder()
                             .addLong("time", System.currentTimeMillis())
