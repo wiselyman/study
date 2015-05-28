@@ -91,7 +91,8 @@ public class ExcelBatchConfig {
 
     @Bean
     @StepScope
-    public ItemWriter<Player> writer(DataSource dataSource,@Value("#{jobParameters['sql']}") String sql) {
+    public ItemWriter<Player> writer(DataSource dataSource,
+                                     @Value("#{jobParameters['sql']}") String sql) {
         JdbcBatchItemWriter<Player> writer = new JdbcBatchItemWriter<Player>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Player>());
         writer.setSql(sql);
@@ -100,8 +101,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public JobRepository jobRepository(DataSource dataSource,<br />
-    				PlatformTransactionManager transactionManager) throws Exception {
+    public JobRepository jobRepository(DataSource dataSource,
+                                       PlatformTransactionManager transactionManager) throws Exception {
         JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
         jobRepositoryFactoryBean.setDataSource(dataSource);
         jobRepositoryFactoryBean.setTransactionManager(transactionManager);
@@ -110,8 +111,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public SimpleJobLauncher jobLauncher(DataSource dataSource,<br />
-    				PlatformTransactionManager transactionManager) throws Exception{
+    public SimpleJobLauncher jobLauncher(DataSource dataSource,
+                                         PlatformTransactionManager transactionManager) throws Exception{
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(jobRepository(dataSource,transactionManager));
         return jobLauncher;
@@ -285,6 +286,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DemoController {
     @Autowired
     JobLauncher jobLauncher;
+
     @Autowired
     Job importUserJob;
     public JobParameters   jobParameters;
@@ -292,19 +294,17 @@ public class DemoController {
     @ResponseBody
     public String export(@RequestParam String xls) throws Exception{
         String path = xls+".xls";
-        String sql = "insert into batch_player "
-        + "(id,position,firstname, lastname,birthyear,debutyear)"<br />
-        + "values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
+        String sql = "insert into batch_player " +
+                "(id,position,firstname, lastname,birthyear,debutyear) " +
+                "values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
 
-        jobParameters = new JobParametersBuilder()
-                            .addLong("time", System.currentTimeMillis())
-                            .addString("input.file.name", path)
-                            .addString("sql",sql).toJobParameters();
+        jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis()).addString("input.file.name", path).addString("sql",sql).toJobParameters();
         jobLauncher.run(importUserJob,jobParameters);
         return "ok";
     }
 
 }
+
 
 ```
 
