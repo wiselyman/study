@@ -293,8 +293,9 @@ public class DemoController {
     public String export(@RequestParam String xls) throws Exception{
         String path = xls+".xls";
         String sql = "insert into batch_player "
-        +"(id,position,firstname, lastname,birthyear,debutyear)"  
-        +"values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
+        + "(id,position,firstname, lastname,birthyear,debutyear)"
+
+        + "values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
 
         jobParameters = new JobParametersBuilder()
                             .addLong("time", System.currentTimeMillis())
