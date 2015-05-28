@@ -100,7 +100,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public JobRepository jobRepository(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
+    public JobRepository jobRepository(DataSource dataSource,
+    				PlatformTransactionManager transactionManager) throws Exception {
         JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
         jobRepositoryFactoryBean.setDataSource(dataSource);
         jobRepositoryFactoryBean.setTransactionManager(transactionManager);
@@ -109,7 +110,8 @@ public class ExcelBatchConfig {
     }
 
     @Bean
-    public SimpleJobLauncher jobLauncher(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception{
+    public SimpleJobLauncher jobLauncher(DataSource dataSource,
+    				PlatformTransactionManager transactionManager) throws Exception{
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(jobRepository(dataSource,transactionManager));
         return jobLauncher;
@@ -291,7 +293,7 @@ public class DemoController {
     public String export(@RequestParam String xls) throws Exception{
         String path = xls+".xls";
         String sql = "insert into batch_player "
-        +"(id,position,firstname, lastname,birthyear,debutyear)"
+        +"(id,position,firstname, lastname,birthyear,debutyear)"  
         +"values(:id,:position,:firstName, :lastName,:birthYear,:debutYear)";
 
         jobParameters = new JobParametersBuilder()
