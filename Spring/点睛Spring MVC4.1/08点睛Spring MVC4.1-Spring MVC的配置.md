@@ -8,10 +8,10 @@
   - **06点睛Spring MVC 4.1-文件上传** 配置multipartResolver
   - **07点睛Spring MVC4.1-ContentNegotiatingViewResolver** 配置ContentNegotiatingViewResolver
 
-- 本节将演示如下配置
- - 默认
+
 
 ## 8.2 演示
+
 ### 8.2.1 配置路径匹配参数
 - 在Spring MVC中路径参数如果带`.`的话,`.`后面的值将被忽略,本例演示配置`configurePathMatch`不忽略点后面的参数;
 
@@ -40,6 +40,7 @@
 - 再次运行:访问访问http://localhost:8080/testSpringMVC/configPath/xx.yy
 
 ![](resources/8-2.jpg)
+
 
 ### 8.2.2 快捷定义ViewController
 
