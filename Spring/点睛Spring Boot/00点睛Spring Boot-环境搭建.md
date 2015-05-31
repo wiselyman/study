@@ -4,7 +4,7 @@
 - 使用**@Conditional**实现了Spring Boot的自动配置功能;
 - Spring Boot内嵌了servlet容器(tomcat或jetty),这意味着spring boot项目可独立运行而不需要额外的servlet容器;
 - Spring Boot可以独立以jar包形式运行(`java -jar xx.jar`)
-- Spring Boot给java语言带来了`ruby on rails`这样动态语言的飞一般开发速度;
+- Spring Boot给java语言带来了动态语言开发的飞一般开发速度;
 - 本教程基于maven和IntelliJ IDEA演示;
 
 ## 0.2 搭建方式
@@ -23,7 +23,27 @@
 - Generate Project
 - 下载解压`demoboot.zip`
 
-### 0.2.2 手工构建
+
+### 0.2.2 使用STS(Spring Tool Suite)
+![](resources/1-1.png)
+
+### 0.2.3 使用IntelliJ IDEA 14.1
+步骤与使用在线模板一致
+![](resources/1-11.jpg)
+
+### 0.2.4 Spring Boot CLI
+- 下载[Sping boot CLI](http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.2.3.RELEASE/spring-boot-cli-1.2.3.RELEASE-bin.zip)
+- 解压并将`bin`配置到环境变量的path中
+  ![](resources/1-2.png)
+
+- 初始化项目
+  - 打开cmd输入
+
+  ```shell
+   spring init --dependencies=web,data-jpa my-project
+  ```
+
+### 0.2.5 手工构建
 - 手工构建与上述情况其实是一样的;
 - 只要maven的pom.xml里包含以下,我们的项目就成为了一个spring boot项目
 
@@ -36,28 +56,18 @@
 </parent>
 
 ```
+- 然后添加相应的`spring-boot-starter-*`到dependencies即可;
+- 然后在相应的开发工具中导入maven项目;
+- 目前推荐此方案构建，因为其他方案都涉及访问`http://start.spring.io`,这个网站国内经常访问不了;
 
-### 0.2.3 开发工具
+
+### 0.2.6 开发工具推荐
 - 在这里我们将使用一个新的开发工具叫**IntelliJ IDEA**;
 - **IntelliJ IDEA**具有智能提示,不卡顿,功能全等诸多优点,是eclipse完全不能比拟的;
 - 下载地址[https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/)
+- 免费使用30天,因为在中国,你可以呵呵了
 
-
-### 0.2.4 导入开发工具
-![](resources/1-1.jpg)
-![](resources/1-2.jpg)
-![](resources/1-3.jpg)
-![](resources/1-4.jpg)
-![](resources/1-5.jpg)
-![](resources/1-6.jpg)
-![](resources/1-7.jpg)
-![](resources/1-8.jpg)
-
-### 0.2.6 直接使用IntelliJ IDEA新建spring boot 项目
-步骤与使用在线模板一直  
-![](resources/1-11.jpg)
-
-### 0.2.5 简单演示
+### 0.2.7 简单演示
 - 在pom.xml里添加对web开发的支持,此处依赖不用加version,因为spring-boot-starter-parent已经对全局的常用jar包的版本做了定义
 ```xml
 <dependency>
