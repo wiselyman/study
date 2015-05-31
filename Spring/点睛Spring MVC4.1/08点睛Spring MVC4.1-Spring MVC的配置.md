@@ -62,6 +62,7 @@
 ```
 
 - 以上效果等同,均会指向views下的test.jsp
+
 ### 8.2.3 配置`HttpMessageConverter`
 - `HttpMessageConverter`是对http的request和response进行自动转换
 - 配置`HttpMessageConverter`可重载下面两个方法任意一个
