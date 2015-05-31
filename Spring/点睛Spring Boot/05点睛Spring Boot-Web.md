@@ -146,7 +146,7 @@ import java.util.List;
 @Configuration
 public class WiselyMvcConfig extends WebMvcConfigurerAdapter {
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         WiselyMessageConverter converter = new WiselyMessageConverter();
         converters.add(converter);
     }
