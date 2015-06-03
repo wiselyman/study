@@ -14,7 +14,7 @@
 - 启动openoffice服务
 
 ```shell
-C:\Program Files (x86)\OpenOffice.org 3\program
+cd C:\Program Files (x86)\OpenOffice.org 3\program
 soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;
 ```
 
@@ -62,7 +62,8 @@ public class PptConverter {
         }
 
         // convert
-        ExternalOfficeManagerConfiguration configuration = new ExternalOfficeManagerConfiguration();
+        ExternalOfficeManagerConfiguration configuration = 
+                             new ExternalOfficeManagerConfiguration();
         configuration.setConnectionProtocol(OfficeConnectionProtocol.SOCKET);
         configuration.setPortNumber(8100);
         OfficeManager officeManager= configuration.buildOfficeManager();
