@@ -1,6 +1,7 @@
 在线浏览ppt的思路是
 - 先将ppt转为pdf
 - 再用js调用pdf在线查看
+- 主要借助的工具有**openoffice**,**jodconveter**,**viewerjs**
 
 # 1 服务端
 
