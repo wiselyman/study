@@ -38,15 +38,15 @@ public interface DemoServiceConfig {
 ```java
 package com.wisely.spring4_2.defaultMethod;
 
-import org.springframework.context.annotation.Bean;
-public interface DemoServiceConfig {
+import org.springframework.context.annotation.Configuration;
 
-	@Bean
-	default DemoService DemoService(){
-		return new DemoService();
-	}
+@Configuration
+public class AppConfig implements DemoServiceConfig{
+
+	
 
 }
+
 
 ```
 
